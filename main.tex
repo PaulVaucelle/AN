@@ -8,8 +8,8 @@
 \usetikzlibrary{calc}
 \newcommand{\tl}{\ensuremath{\textless}}
 \newcommand{\tg}{\ensuremath{\textgreater}}
-\newcommand{\mumu}{\ensuremath{\rightarrow\mu^{+}\mu^{-}}}
-\newcommand{\e}{\ensuremath{\rightarrow e^{+}e^{-}}}
+\newcommand{\mumu}{\ensuremath{\mu^{+}\mu^{-}}}
+\newcommand{\ee}{\ensuremath{\e^{+}e^{-}}}
 \newcommand{\MGaMC}{\textsc{MG5}\_a\textsc{MC}\xspace}
 \newcommand{\GENEVA}{\textsc{geneva}\xspace}
 \newcommand{\source}[1]{\caption*{Source: {#1}} }
@@ -92,7 +92,9 @@
 \newcommand{\dimu}{$\mu\mu$\xspace}
 
 
-\title{\centering Search for displaced top quark from a new massive particle decay in the tracker of CMS}
+\title{\centering
+Search for a long-lived massive particle decaying into a top quark and light quarks in proton-proton collisions at $\sqrt{s} = 13$ and $13.6$ TeV
+}
 \author{CMS collaboration}
 \date{\today}
 
@@ -109,7 +111,7 @@
 
 \begin{abstract}
 
-A search for massive long-lived particle (LLP) decaying to a top quark in proton-proton collisions at $\sqrt{s}$ = 13 TeV is presented in this paper. New long-lived particles are predicted in several extensions of the Standard Model (SM). In the R-parity violated Minimal SuperSymmetric Model (RPV-MSSM) considered, the lightest SuperSymmetric particle (LSP) is long-lived and decays into a top and a virtual stop quark which couples to a down and strange quark pair. Machine learning is used to distinguish signal-displaced tracks from Standard Model prompt tracks for the reconstruction of displaced vertices.
+A search for the associated production of a \mumu pair and a pair of massive long-lived particles (LLP), each decaying into a top quark and two light quarks is presented. The data correspond to an integrated luminosity of 300\fbinv recorded in proton-proton collisions at $\sqrt{s} = 13$ and $13.6$ TeV at the LHC. Machine learning technique is used to distinguish displaced charged particles tracks from the LLP and from the Standard Model background. A study is performed relying on reconstructed displaced vertices. Results are interpreted within the R-parity violated Minimal SuperSymmetric model. 
 \end{abstract}
 
 % Make the review table at the bottom of the title page
@@ -118,15 +120,15 @@ A search for massive long-lived particle (LLP) decaying to a top quark in proton
 \clearpage
 
 % Short documentes dont always need a Table of Content / Figures / Tables, so comment out what is not needed
-\begingroup
-\color{black}
-\tableofcontents
-\pagebreak
-\listoffigures
-\pagebreak
-\listoftables
-\endgroup
-\pagebreak
+% \begingroup
+% \color{black}
+% \tableofcontents
+% \pagebreak
+% \listoffigures
+% \pagebreak
+% \listoftables
+% \endgroup
+% \pagebreak
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -136,11 +138,24 @@ A search for massive long-lived particle (LLP) decaying to a top quark in proton
 
 \section{Introduction}
 \label{SEC: INTRO}
-Many extensions of the Standard Model (SM) predict the existence of long-lived particles through weak couplings and/or high masses, making the production of these new particles to be suppressed. However, long-lived particles are highly motivated by the R-Parity Violated Minimal SuperSymmetry Model (RPV-MSSM) \cite{RPV1, RPV2, RPV3, RPV4}, Split-SUSY \cite{SPLITSUSY, SPLITSUSY2, SPLITSUSY3, SPLITSUSY4, SPLITSUSY5, SPLITSUSY6}, weakly interacting massive particles (WIMP) \cite{WIMP1,WIMP2,WIMP3}, Gauge Mediated supersymmetry breaking (GMSB) \cite{GMSB1,GMSB2, GMSB3}, hidden sector \cite{HS1, HS2, HS3}.
+The search for long-lived particles (LLP) is highly motivated by many extensions of the Standard Model (SM), as R-Parity Violated Minimal SuperSymmetry Model (RPV-MSSM)~\cite{RPV1, RPV2, RPV3, RPV4}, Split-SUSY~\cite{SPLITSUSY, SPLITSUSY2, SPLITSUSY3, SPLITSUSY4, SPLITSUSY5, SPLITSUSY6}, weakly interacting massive particles~\cite{WIMP1,WIMP2,WIMP3}, Gauge Mediated supersymmetry breaking (GMSB)~\cite{GMSB1,GMSB2, GMSB3}, hidden sector \cite{HS1, HS2, HS3}. However the LLP production cross section can be small in case of a high mass or due to its weak coupling, and dedicated techniques have to be applied to reduce the large SM background.
 
- In this paper, we search for long-lived neutral SUSY particles that decay in the tracker into SM particles, as allowed by the RPV-MSSM. These long-lived SUSY particles are pair-produced from proton-proton (pp) collisions at a center-of-mass energy of 13 TeV in 2016, 2017 and 2018 and 13.6 TeV in 2022, 2023 and 2024 corresponding to an integrated luminosity of \textcolor{red}{300} $fb^{-1}$. This analysis looks for displaced vertices coming from the decay of the pair-produced long-lived particles, where the latter decay into SM particles producing jets and tracks in the tracker volume. The event topology, as well as the tracks and the secondary displaced vertices, can be used to discriminate the displaced signature from SM backgrounds. The analysis is focused on the pair-production of neutral long-lived SUSY particles in the RPV-MSSM and does not address the direct pair-production of neutralinos.
+ Searches for displaced jets and vertices at $\sqrt{13}$ TeV have been reported by ATLAS \cite{ATLAS-CONF-2018-003} \cite{DISJETSATLAS} and CMS \cite{DISJETSCMS} in an inclusive approach, where the displaced vertices are mainly searched in the pixel detectors due to the tracking efficiency decreasing rapidly. 
 
- Searches for displaced jets / vertices at $\sqrt{13}$ TeV have been reported by ATLAS \cite{ATLAS-CONF-2018-003} \cite{DISJETSATLAS} and CMS \cite{DISJETSCMS} in an inclusive approach, where the displaced vertices are mainly searched in the pixel detector due to the tracking efficiency decreasing rapidly and the masses being mainly at the TeV scale. This analysis aims at probing displaced vertices in the whole tracker volume, with final states being highly hadronic keeping the sensitivity to other long-lived models.
+The peculiar process considered in this paper is characterized by the production of a $Z/\gamma^*$ boson from proton-proton (pp) collisions at the LHC. Then the virtual boson couples to a pair of sleptons, where the considered slepton is here a smuon, assumed to be the next-to-lightest supersymmetric particle (NLSP) and to be short-lived. Since the smuon is the NLSP, it decays into a muon and the Lightest-SuperSymmetric-Particle (LSP) which is the neutralino $\chi^{1}_{0}$. The neutralino can only be bino-like, allowing its decay into a top quark and a virtual stop quark. The stop quark couples to SM quarks via $\lambda^{''}_{312}$ RPV coupling giving a down and a strange quark.
+In order to reduce the complexity of the model, no mixing between particles of different generations is considered in the mixing matrices of sleptons and squarks, and left-handed and right-handed mass states are set in equal proportion, but results can be reinterpreted in terms of pure left-handed or right-handed states.
+
+A drawing of the considered signal is depicted in Fig.\ref{fig:Feyn}.
+The final state consists of an energetic \mumu pair which can be used to trigger the event, and many jets from the two neutralino decays. If the decays occur in the tracker acceptance, secondary vertices with many tracks can be reconstructed, allowing a significant reduction of the SM backgrounds.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=6cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Feynmann/smuprod.png}\includegraphics[height=6cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Feynmann/ChiDecay.png}
+\caption{\label{fig:Feyn} Smuon pair production and decay channels.}
+\end{figure}
+
+Data recorded in pp collisions at the LHC at center-of-mass energies of 13~TeV from 2016 to 2018 and 13.6~TeV from 2022 to 2024, corresponding to an integrated luminosity of \textcolor{red}{300} $fb^{-1}$, are used. 
+The analysis focus on the search for the associated production of a \mumu pair and pair-produced long-lived particles which decay into SM particles producing jets and tracks in the tracker volume. The event topology, as well as the tracks and the secondary displaced vertices, are used to discriminate the displaced signature from SM backgrounds. The high hadronic activity helps to improve the sensitivity as compared to previous searches. The results are interpreted in term of smuon pair production within the RPV-MSSM.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,56 +163,51 @@ Many extensions of the Standard Model (SM) predict the existence of long-lived p
 %------------------- SECTION ----------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
+% \newpage
 \section{MC simulation}
 \label{SEC: MC}
 
 \subsection{Signal}
-The search development is carried out using privately simulated signal samples (\textcolor{red}{central production is on-going}). These samples are generated using the MADGRAPH5\_aMC@NLO generator \cite{MAD} at leading order (LO) plus 1 jet from an initial-state radiation. The generation is produced using a private model described in the Appendix.\ref{APP: GEN}. This model allows for the decay of the neutralino into SUSY and SM particles following the RPV-MSSM. In this analysis, we focus on the pair production of long-lived neutral SUSY particles as shown in Fig.\ref{fig:Feyn}.
-
-The signal process is characterized by the production of a $Z/\gamma^*$ boson from pp collisions at the LHC. Then, the produced boson decays into a pair of sleptons, the next-to-lightest supersymmetric particle (NLSP), where the considered sleptons are the smuons. Since the slepton is the NLSP, it decays into a muon and the Lightest-SuperSymmetric-Particle (LSP) which is the neutralino $ \chi^{1}_{0}$. The branching ratio for this decay is set to 100\% in order to reduce the complexity of the model. The neutralino can only be a bino-like neutralino to allow the decay through the $\lambda^{''}$ RPV-coupling to lead to violation of the baryonic number and the production of a top quark in the final state. The sleptons are short-lived particle leaving  prompt leptons as final state particles of the signal process that can be use to trigger the signal events. Since the muons can be easily triggered and are easier to identify, the muon channel is chosen. The selectron channel can be added to the analysis in the future and the stau channel could also be considered from theory, but is not studied in this analysis due to the complexity of the tau decay and the consequences on the reconstruction of the event.
-
-The long-lived neutralino is assumed to decay into the tracker volume into a virtual stop and a top quark. The latter follows its SM decay channel, where both hadronic and leptonic decays are considered for the W boson. The stop couples to SM quarks with the $\lambda^{''}$ RPV-coupling where the specific decay is given by $\lambda^{''}_{312}$ with 3, 1 and 2 being the generations of quarks considered. The stop couples to a down and a strange quark, giving a heavy hadronic activity to the final state of the signal process. No mixing between particles of different generations is considered in the mixing matrices of sleptons and squarks, and mass states are in an equal proportion of left-handed and right-handed states also to reduce the complexity of the model but results can be reinterpreted in terms of pure left-handed or right-handed states.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[height=6cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Feynmann/smuprod.png}\includegraphics[height=6cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Feynmann/ChiDecay.png}
-\caption{\label{fig:Feyn} Neutralino production and decay channel}
-\end{figure}
+The search development is carried out using centrally produced signal samples (\textcolor{red}{\mbox Zto2SmuTo2Mu2ChiTo2Top2Stop production}). These samples are generated using the MADGRAPH5\_aMC@NLO generator \cite{MAD} at leading order (LO) plus 1 jet from initial-state radiation. The generation is produced using a private model described in the Appendix~\ref{APP: GEN}. This model allows for the decay of the neutralino into SUSY and SM particles following the RPV-MSSM. In this analysis, we focus on the pair production of long-lived neutral SUSY particles as shown in Fig.\ref{fig:Feyn}.
 
 We consider a wide range of combinations of values between the following parameters of our signal :
-the mass of the smuon $M_{\Tilde{\mu}}$, the mass of the neutralino $M_{\Tilde{\chi}_{0}^{1}}$, the proper lifetime of the neutralino $c\tau_{0}$, the RPV coupling $\lambda^{''}_{312}$, and the mass of the virtual stop $M_{\Tilde{t}}$. All envisaged combinations are described in Table.\ref{tab:TAB1}. The upper limit on $M_{\Tilde{\mu}}$ is due to a low cross section ($\sim 0.1fb$) but could be extended with more data-taking and the lower limit is due to the production of a top quark in the decay channel of the neutralino and also from previous experimental limits \cite{ATLAS1,ATLAS2,ATLAS3,CMS1,ATLAS4,CMS2,ATLAS5}. The cross section $\sigma$ of the pair production of $\Tilde{\mu}$ is entirely determined by $M_{\Tilde{\mu}}$ and shown in Table.\ref{tab:RLLRXS},  \ref{tab:LEFTXS} and \ref{tab:RIGHTXS} for different mixing of left and right-handed sleptons. For simplicity, all other RPV-couplings are null. \\
-Around 240 signal samples are produced per year of data-taking except for 2016 where signal samples were produced pre and post-APV.
+the mass of the smuon $m_{\Tilde{\mu}}$, the mass of the neutralino $m_{\Tilde{\chi}_{0}^{1}}$, the proper lifetime of the neutralino $c\tau_{0}$, the RPV coupling $\lambda^{''}_{312}$, and the mass of the virtual stop $m_{\Tilde{t}}$. All envisaged combinations are described in Table~\ref{tab:TAB1}. The upper limit on $M_{\Tilde{\mu}}$ is due to a low cross section ($\sim 0.1$~fb) and the lower limit is due to the presence of a top quark in the neutralino decay and also from previous experimental limits \cite{ATLAS1,ATLAS2,ATLAS3,CMS1,ATLAS4,CMS2,ATLAS5}. 
+Around 240 signal samples are produced per year period of data-taking (including 2016 pre- and post-APV correction, 2022 pre- and post-EE leak, 2023 pre- and post-BPIX failure), so 4 year periods in 2016-2018 and 5 in 2022-2024.
+
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
   \hline
-  $\beta\gamma c\tau$(cm) & $M_{\Tilde{\mu}}$ (GeV) &  $M_{\Tilde{\chi}_{0}^{1}}$ (GeV) &  $M_{\Tilde{t}}$(GeV) &  $\lambda^{''}_{312}$ \\
+  $\beta\gamma c\tau$~(cm) & $m_{\Tilde{\mu}}$~(GeV) &  $m_{\Tilde{\chi}_{0}^{1}}$~(GeV) &  $m_{\Tilde{t}}$(GeV) &  $\lambda^{"}_{312}$ \\
   \hline
 \textbf{0.1 to 100} & \textbf{200 to 500}  & \textbf{180 to 480}  & 1000 &  $10^{-4}$ to $10^{-1}$\\
   \hline
 \end{tabular}
-    \caption{Masses of the SUSY particles and the associated couplings for the different benchmarks in order to probe the tracker volume. Samples are generated for 7 different $c\tau_{0}$: 0.1, 0.3, 1.0, 3.0, 10.0, 30.0 and 100 cm and by gap of 50 GeV. The smuons mass defines the cross-section of the process while all the other parameters  define the decay length of the neutralino as followed : $ L = \frac{0.9*\beta\gamma}{\lambda^{"2}}*(\frac{m(\tilde{t})}{100})^{4}*(\frac{1}{m(\chi)})^{5}$}
+    \caption{Masses of the SUSY particles and the associated couplings for the different benchmarks used. Samples are generated for 7 different $c\tau_{0}$ values (0.1, 0.3, 1, 3, 10, 30 and 100~cm) and by step of 50~GeV for the $\Tilde{\mu}$ and $\Tilde{\chi}_{0}^{1}$ masses.}
     \label{tab:TAB1}
 \end{table}
+
+The smuon pair production cross-section depends only on the smuon mass, while the decay length ($L$) of the neutralino depends on the other parameters as follows:
+$$ L = \frac{0.9 \beta\gamma}{(\lambda^{"}_{312})^2} \left(\frac{m_{\Tilde{t}}}{100}\right)^{4} \left(\frac{1}{m_{\Tilde{\chi}_{0}^{1}}}\right)^5. $$
+
 \textcolor{red}{Faire les plots de boost vs masse neutralino et pour une masse donnée de smuon ainsi que les pltos 3D, plot 3D}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[height=6cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/PhaseSPace/Meandecaylength.png}
-\caption{\label{fig:bgctau} \textcolor{red}{to be repalced} Mean decay length of the neutralino as a function of the neutralino mass and the coupling. The black lines are the limits of the volume of the tracker of CMS. The tracker volume puts constraints on the phase space to be probed.}
+\caption{\label{fig:bgctau} \textcolor{red}{to be replaced} Mean decay length of the neutralino as a function of the neutralino mass and coupling. The black lines are the limits of the volume of the tracker of CMS. The tracker volume sets constraints on the phase space to be probed.}
 \end{figure}
 
+The cross section $\sigma$ of the pair production of $\Tilde{\mu}$ is displayed in Tables~\ref{tab:RLLRXS}, \ref{tab:LEFTXS} and~\ref{tab:RIGHTXS} for different mixing of left- and right-handed sleptons at Run 2 and in Tables~\ref{tab:RLLRXS13p6}, \ref{tab:LEFTXS13p6} and~\ref{tab:RIGHTXS13p6} at Run 3 . For simplicity all other RPV couplings are null. 
+%\\
 
-\FloatBarrier
-
-
+%\FloatBarrier
 \begin{table}
     \centering
     \begin{tabular}{ | c | c | c |}
         \hline
         \rowcolor{lightgray} 
-         $M_{\Tilde{\mu}}$ [GeV] &  LO [fb] & L0+ 1 jet [fb]\\
+         $m_{\Tilde{\mu}}$ [GeV] &  LO [fb] & LO + 1 jet [fb]\\
          \hline
          200  & $8.964^{+1.71\%}_{-1.86\%} \pm 1.83\%$ & $14.35^{+5.72\%}_{-4.41\%} \pm 1.92\%$ \\
          \hline
@@ -214,16 +224,42 @@ Around 240 signal samples are produced per year of data-taking except for 2016 w
          500  & $0.18886^{+6.57\%}_{-5.9\%} \pm 3.49\%$ & $0.34^{+6.65\%}_{-5.98\%} \pm 3.57\%$\\
          \hline
     \end{tabular}
-    \caption{Total production cross sections at the LHC, running at a center-of-mass energy of 13 TeV, for second generation mixed states (50\% Right-Handed 50\% Left-Handed) sleptons. Results are given in fb with the associated uncertainties using the PDF PDF4LHC15\_nlo\_mc (LHAid : 90500). The first column gives the cross sections at LO obtained with MADGRAPH5\_aMC@NLO for this analysis, the second column is at LO + 1jet. Assymetric uncertainties are scale variations while symmetric variations are PDF uncertainties.} 
+    \caption{Total production cross sections at pp center-of-mass energy of 13 TeV, for second generation mixed states (50\% right-handed, 50\% left-handed) sleptons. Results are given in fb with the associated uncertainties using the PDF PDF4LHC15\_nlo\_mc (LHAid : 90500). The second column gives the cross sections at LO obtained with MADGRAPH5\_aMC@NLO for this analysis, the third column is at LO + 1 jet. Asymmetric uncertainties are scale variations while symmetric variations are PDF uncertainties.} 
     \label{tab:RLLRXS}
 \end{table}
-\FloatBarrier
+
+\begin{table}
+    \centering
+    \begin{tabular}{ | c | c |}
+        \hline
+        \rowcolor{lightgray} 
+         $m_{\Tilde{\mu}}$ [GeV] &  LO + 1 jet [fb]\\
+         \hline
+         200  & $15.59^{+5.80\%}_{-4.47\%} \pm 1.86\%$  \\
+         \hline
+         250   & $6.86^{+5.94\%}_{-4.60\%} \pm 2.03\%$ \\
+         \hline
+         300  & $3.39^{+6.07\%}_{-4.71\%} \pm 2.43\%$ \\
+         \hline
+         350 &  $1.82^{+6.21\%}_{-4.83\%} \pm 2.69\%$\\
+         \hline
+         400  & $1.04^{+6.28\%}_{-4.90\%} \pm 3.21\%$ \\
+         \hline
+         450  & $0.62^{+6.33\%}_{-4.95\%} \pm 3.20\%$ \\
+         \hline
+         500  & $0.39^{+6.36\%}_{-4.93\%} \pm 3.41\%$ \\
+         \hline
+    \end{tabular}
+    \caption{Total production cross sections at pp center-of-mass energy of 13.6 TeV, for second generation mixed states (50\% right-handed, 50\% left-handed) sleptons. Results are given in fb with the associated uncertainties using the PDF PDF4LHC15\_nlo\_mc (LHAid : 90500). The second column gives the cross sections at LO + 1 jet obtained with MADGRAPH5\_aMC@NLO for this analysis. Asymmetric uncertainties are scale variations while symmetric variations are PDF uncertainties.} 
+    \label{tab:RLLRXS13p6}
+\end{table}
+
 \begin{table}
     \centering
     \begin{tabular}{ | c || c | m{6em} | c |}
         \hline
         \rowcolor{lightgray} 
-         $M_{\Tilde{\mu}}$ [GeV]  & LO [fb] This Analysis & LO [fb] \cite{Fuks_2014}& LO [fb] \cite{Fiaschi_2018}\\
+         $m_{\Tilde{\mu}}$ [GeV]  & LO [fb] this analysis & LO [fb] \cite{Fuks_2014}& LO [fb] \cite{Fiaschi_2018}\\
          \hline
          \hline
          200 & $17.93^{+1.69\%}_{-1.85\%} \pm 1.87\%$  & $18.84^{+1.3\%}_{-1.6\%}$ & $18.68^{+0.8\%}_{-1.1\%} \pm 6.2\%$ \\
@@ -241,16 +277,43 @@ Around 240 signal samples are produced per year of data-taking except for 2016 w
          500  & $0.38^{+6.56\%}_{-5.89\%} \pm 3.47\%$   & $0.42^{+7.1\%}_{-6.3\%}$  & $0.46^{+6.5\%}_{-5.8\%} \pm 6.4\%$ \\
          \hline
     \end{tabular}
-    \caption{Total production cross sections at the LHC, running at a center-of-mass  energy of 13 TeV, for second generation left handed sleptons. Results are given in fb with the associated uncertainties using the PDF PDF4LHC15\_nlo\_mc (LHAid : 90500). The first column gives the cross sections obtained with MADGRAPH5\_aMC@NLO for this analysis. The second column is given by \cite{Fuks_2014} and the third column by \cite{Fiaschi_2018}. The cross sections could be extended at NLO using the K factor ($\frac{\sigma_{NLO}}{\sigma_{LO}}$) method, with a value of around 1.4. Assymetric uncertainties are scale variations while symmetric variations are PDF uncertainties.} 
+    \caption{Total production cross sections at pp center-of-mass  energy of 13 TeV, for second generation left-handed sleptons. Results are given in fb with the associated uncertainties using the PDF PDF4LHC15\_nlo\_mc (LHAid : 90500). The second column gives the cross sections obtained with MADGRAPH5\_aMC@NLO for this analysis. The third column is from~\cite{Fuks_2014} and the fourth column from~\cite{Fiaschi_2018}. The cross sections could be extended at NLO using a $K$ factor ($\frac{\sigma_{NLO}}{\sigma_{LO}}$) of about 1.4. Asymmetric uncertainties are scale variations while symmetric variations are PDF uncertainties.} 
     \label{tab:LEFTXS}
 \end{table}
-\FloatBarrier
+
+\begin{table}
+    \centering
+    \begin{tabular}{ | c || c |}
+        \hline
+        \rowcolor{lightgray} 
+         $m_{\Tilde{\mu}}$ [GeV]  & LO + 1 jet [fb] \\
+         \hline
+         \hline
+         200 & $31.17^{+5.80\%}_{-4.47\%} \pm 1.86\%$  \\
+         \hline
+         250  & $13.73^{+5.94\%}_{-4.60\%} \pm 2.03\% $   \\
+         \hline
+         300  & $6.77^{+6.07\%}_{-4.71\%} \pm 2.43\%$ \\
+         \hline
+         350  & $3.65^{+6.21\%}_{-4.84\%} \pm 2.69\%$ \\
+         \hline
+         400   & $2.09^{+6.28\%}_{-4.90\%} \pm 3.21\%$ \\
+         \hline
+         450   & $1.25^{+6.33\%}_{-5.27\%} \pm 3.20\%$  \\
+         \hline
+         500  & $0.78^{+6.65\%}_{-5.75\%} \pm 3.41\%$  \\
+         \hline
+    \end{tabular}
+    \caption{Total production cross sections at pp center-of-mass  energy of 13.6 TeV, for second generation left-handed sleptons. Results are given in fb with the associated uncertainties using the PDF PDF4LHC15\_nlo\_mc (LHAid : 90500). The second column gives the cross sections obtained with MADGRAPH5\_aMC@NLO for this analysis. The third column is from~\cite{Fuks_2014} and the fourth column from~\cite{Fiaschi_2018}. The cross sections could be extended at NLO using a $K$ factor ($\frac{\sigma_{NLO}}{\sigma_{LO}}$) of about 1.4. Asymmetric uncertainties are scale variations while symmetric variations are PDF uncertainties.} 
+    \label{tab:LEFTXS13p6}
+\end{table}
+
 \begin{table}
     \centering
     \begin{tabular}{ | c || c | m{6em} |}
         \hline
         \rowcolor{lightgray} 
-         $M_{\Tilde{\mu}}$ [GeV]  & LO [fb] This Analysis & LO [fb] \cite{Fuks_2014} \\
+         $m_{\Tilde{\mu}}$ [GeV]  & LO [fb] this analysis & LO [fb] \cite{Fuks_2014} \\
          \hline
          \hline
          200 & $7.66^{+1.63\%}_{-1.8\%} \pm 2.11\% $  & $7.03^{+1.3\%}_{-1.6\%}$  \\
@@ -268,15 +331,43 @@ Around 240 signal samples are produced per year of data-taking except for 2016 w
          500  & $0.17^{+6.47\%}_{-5.82\%} \pm 3.46\%$   & $0.16^{+7.0\%}_{-6.2\%}$ \\
          \hline
     \end{tabular}
-    \caption{Total production cross sections at the LHC, running at a center-of-mass  energy of 13 TeV, for second generation right handed sleptons. Results are given in fb with the associated uncertainties using the PDF PDF4LHC15\_nlo\_mc (LHAid : 90500). The first column gives the cross sections obtained with MADGRAPH5\_aMC@NLO for this analysis, the second column is given by \cite{Fuks_2014}. The cross sections can be extended at NLO using the K factor ($\frac{\sigma_{NLO}}{\sigma_{LO}}$) method, with a value of around 1.4. Asymmetric uncertainties are scale variations and symmetric uncertainties are PDF variations.} 
+    \caption{Total production cross sections at pp center-of-mass  energy of 13 TeV, for second generation right-handed sleptons. Results are given in fb with the associated uncertainties using the PDF PDF4LHC15\_nlo\_mc (LHAid : 90500). The second column gives the cross sections obtained with MADGRAPH5\_aMC@NLO for this analysis, the third column is from~\cite{Fuks_2014}. The cross sections can be extended at NLO using a $K$ factor ($\frac{\sigma_{NLO}}{\sigma_{LO}}$) of about 1.4. Asymmetric uncertainties are scale variations and symmetric uncertainties are PDF variations.} 
     \label{tab:RIGHTXS}
 \end{table}
-\FloatBarrier
+
+\begin{table}
+    \centering
+    \begin{tabular}{ | c || c |}
+        \hline
+        \rowcolor{lightgray} 
+         $m_{\Tilde{\mu}}$ [GeV]  & LO + 1 jet [fb]  \\
+         \hline
+         \hline
+         200 & $13.36^{+5.86\%}_{-4.51\%} \pm 2.07\% $  \\
+         \hline
+         250  & $5.92^{+5.93\%}_{-4.59\%} \pm 2.27\%$    \\
+         \hline
+         300  & $2.94^{+6.18\%}_{-4.80\%} \pm 2.53\%$  \\
+         \hline
+         350  & $1.59^{+6.21\%}_{-4.83\%} \pm 2.76\% $   \\
+         \hline
+         400   & $0.91^{+6.31\%}_{-4.83\%} \pm 3.00\%$  \\
+         \hline
+         450   & $0.55^{+6.34\%}_{-5.22\%} \pm 3.27\%$   \\
+         \hline
+         500  & $0.34^{+6.39\%}_{-5.67\%} \pm 3.55\%$  \\
+         \hline
+    \end{tabular}
+    \caption{Total production cross sections at pp center-of-mass  energy of 13.6 TeV, for second generation right handed sleptons. Results are given in fb with the associated uncertainties using the PDF PDF4LHC15\_nlo\_mc (LHAid : 90500). The second column gives the cross sections obtained with MADGRAPH5\_aMC@NLO for this analysis, the third column is from~\cite{Fuks_2014}. The cross sections can be extended at NLO using a $K$ factor ($\frac{\sigma_{NLO}}{\sigma_{LO}}$) of about 1.4. Asymmetric uncertainties are scale variations and symmetric uncertainties are PDF variations.} 
+    \label{tab:RIGHTXS13p6}
+\end{table}
+%\FloatBarrier
+
 
 \subsection{Background}
 
  The background sources for this displaced vertices search are mainly $t\Bar{t}$ and Drell-Yan.
-To develop the analysis, MC samples generated during the Summer20 Ultra-Legacy campaign for 2016, 2017 and 2018 stored in the MiniAODv2 format are used. The CMSSW settings to process these MC samples are given in Table [\ref{tab:MCSET}].
+To develop the analysis, MC samples generated during the Summer20 Ultra-Legacy campaign for 2016, 2017 and 2018 stored in the MiniAODv2 format are used. The CMSSW settings to process these MC samples are given in Table [\ref{tab:MCSET}] for Run 2 and Table \ref{tab:MCSETRun3} .
 These samples are listed for each year of Run 2 in the Tables [\ref{tab:MC2016}], [\ref{tab:MC2017}] and [\ref{tab:MC2018}].
 
 \begin{table}
@@ -286,19 +377,38 @@ These samples are listed for each year of Run 2 in the Tables [\ref{tab:MC2016}]
     \rowcolor{lightgray} 
          Year &  CMSSW release & Global Tag  \\
     \hline
-         2016Pre & 10\_6\_30 &   106X\_mcRun2\_asymptotic\_preVFP\_v11\\
+         2016Pre & 10\_6\_30&   106X\_mcRun2\_asymptotic\_preVFP\_v11\\
     \hline
          2016Post & 10\_6\_30 &  106X\_mcRun2\_asymptotic\_v17  \\
     \hline
          2017 & 10\_6\_30 &  106X\_mc2017\_realistic\_v10  \\
     \hline
-         2018 & 10\_6\_30 &  106X\_upgrade2018\_realistic\_v16\_L1v1 \\
+         2018 & 10\_6\_30  &  106X\_upgrade2018\_realistic\_v16\_L1v1 \\
     \hline
     \end{tabular}
     \caption{Version of the CMS Software and the associated global tag for each year of Run 2}
     \label{tab:MCSET}
 \end{table}
-\FloatBarrier
+
+\begin{table}
+    \centering
+    \begin{tabular}{| c | c | c |}
+    \hline
+    \rowcolor{lightgray} 
+         Year &  CMSSW release & Global Tag  \\
+    \hline
+         2022 & 14\_0\_8 &   130X\_mcRun3\_2022\_realistic\_v5\\
+    \hline
+         2022EE & 14\_0\_8 &  130X\_mcRun3\_2022\_realistic\_postEE\_v6  \\
+    \hline
+         2023 & 14\_0\_8 &  130X\_mcRun3\_2023\_realistic\_v14  \\
+    \hline
+         2023BPix & 14\_0\_8 &   130X\_mcRun3\_2023\_realistic\_postBPix\_v2 \\
+    \hline
+    \end{tabular}
+    \caption{Version of the CMS Software and the associated global tag for each year of Run 3}
+    \label{tab:MCSETRun3}
+\end{table}
 
 
 \begin{table}[h]
@@ -308,17 +418,17 @@ These samples are listed for each year of Run 2 in the Tables [\ref{tab:MC2016}]
   \rowcolor{lightgray} 
   Sample 2016 & No. events & $\sigma$ [pb] \\
   \hline
-  \small/TTTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8                                   & 960000 & 88.3\\
-  \small /ST\_tW\_top\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8     & 963768 &  10.8908 \\
-  \small /ST\_tW\_antitop\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 920153 & 10.8707 \\
-  \small/DYJetsToLL\_M-10to50\_TuneCP5\_13TeV-madgraphMLM-pythia8                   & 1836747 & 15910.0\\
-  \small/DYJetsToLL\_M-50\_TuneCP5\_13TeV-madgraphMLM-pythia8                       & 800000 & 5379\\
-  \small/WWTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8                                   & 780000 & 11.09\\
-  \small/WZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8                   & 994094 & 6.535\\
-  \small/ZZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8                   &  780170 & 3.676 \\
-  \small/ttWJetsToLNu\_5f\_EWK\_TuneCP5\_13TeV\_amcatnlo-pythia8                    & 825000 & 0.290 \\
-  \small/TTZToLL\_5f\_TuneCP5\_13TeV-madgraphMLM-pythia8                            & 660694 & 0.05188\\
-  \small/TTWW\_TuneCP5\_13TeV-madgraph-pythia8                                      & 570000 &  0.006992\\
+  \footnotesize/TTTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8                                   & 960000 & 88.3\\
+  \footnotesize /ST\_tW\_top\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8     & 963768 &  10.8908 \\
+  \footnotesize /ST\_tW\_antitop\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 920153 & 10.8707 \\
+  \footnotesize/DYJetsToLL\_M-10to50\_TuneCP5\_13TeV-madgraphMLM-pythia8                   & 1836747 & 15910.0\\
+  \footnotesize/DYJetsToLL\_M-50\_TuneCP5\_13TeV-madgraphMLM-pythia8                       & 800000 & 5379\\
+  \footnotesize/WWTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8                                   & 780000 & 11.09\\
+  \footnotesize/WZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8                   & 994094 & 6.535\\
+  \footnotesize/ZZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8                   &  780170 & 3.676 \\
+  \footnotesize/ttWJetsToLNu\_5f\_EWK\_TuneCP5\_13TeV\_amcatnlo-pythia8                    & 825000 & 0.290 \\
+  \footnotesize/TTZToLL\_5f\_TuneCP5\_13TeV-madgraphMLM-pythia8                            & 660694 & 0.05188\\
+  \footnotesize/TTWW\_TuneCP5\_13TeV-madgraph-pythia8                                      & 570000 &  0.006992\\
 
   \hline
 \end{tabular}
@@ -333,17 +443,17 @@ These samples are listed for each year of Run 2 in the Tables [\ref{tab:MC2016}]
   \rowcolor{lightgray} 
   Sample 2017 & No. events & $\sigma$ [pb] \\
   \hline
-  \small/TTTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8 & 960000 & 88.3\\
-  \small /ST\_tW\_top\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 963768 &  10.8908 \\
-  \small /ST\_tW\_antitop\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 920153 & 10.8707 \\
-  \small/DYJetsToLL\_M-10to50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 1836747 & 15910.0\\
-  \small/DYJetsToLL\_M-50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 800000 & 5379\\
-  \small/WWTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8 & 780000 & 11.09\\
-  \small/WZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8 & 994094 & 6.535\\
-  \small/ZZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8 &  780170 & 3.676 \\
-  \small/ttWJetsToLNu\_5f\_EWK\_TuneCP5\_13TeV\_amcatnlo-pythia8 & 825000 & 0.290 \\
-  \small/TTZToLL\_5f\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 660694 & 0.05188\\
-  \small/TTWW\_TuneCP5\_13TeV-madgraph-pythia8  & 570000 &  0.006992\\
+  \footnotesize/TTTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8 & 960000 & 88.3\\
+  \footnotesize /ST\_tW\_top\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 963768 &  10.8908 \\
+  \footnotesize /ST\_tW\_antitop\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 920153 & 10.8707 \\
+  \footnotesize/DYJetsToLL\_M-10to50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 1836747 & 15910.0\\
+  \footnotesize/DYJetsToLL\_M-50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 800000 & 5379\\
+  \footnotesize/WWTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8 & 780000 & 11.09\\
+  \footnotesize/WZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8 & 994094 & 6.535\\
+  \footnotesize/ZZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8 &  780170 & 3.676 \\
+  \footnotesize/ttWJetsToLNu\_5f\_EWK\_TuneCP5\_13TeV\_amcatnlo-pythia8 & 825000 & 0.290 \\
+  \footnotesize/TTZToLL\_5f\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 660694 & 0.05188\\
+  \footnotesize/TTWW\_TuneCP5\_13TeV-madgraph-pythia8  & 570000 &  0.006992\\
 
   \hline
 \end{tabular}
@@ -358,17 +468,17 @@ These samples are listed for each year of Run 2 in the Tables [\ref{tab:MC2016}]
   \rowcolor{lightgray} 
   Sample 2018 & No. events & $\sigma$ [pb] \\
   \hline
-  \small/TTTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8 & 960000 & 88.3\\
-  \small /ST\_tW\_top\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 963768 &  10.8908 \\
-  \small /ST\_tW\_antitop\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 920153 & 10.8707 \\
-  \small/DYJetsToLL\_M-10to50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 1836747 & 15910.0\\
-  \small/DYJetsToLL\_M-50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 800000 & 5379\\
-  \small/WWTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8 & 780000 & 11.09\\
-  \small/WZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8 & 994094 & 6.535\\
-  \small/ZZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8 &  780170 & 3.676 \\
-  \small/ttWJetsToLNu\_5f\_EWK\_TuneCP5\_13TeV\_amcatnlo-pythia8 & 825000 & 0.290 \\
-  \small/TTZToLL\_5f\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 660694 & 0.05188\\
-  \small/TTWW\_TuneCP5\_13TeV-madgraph-pythia8  & 570000 &  0.006992\\
+  \footnotesize/TTTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8 & 960000 & 88.3\\
+  \footnotesize /ST\_tW\_top\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 963768 &  10.8908 \\
+  \footnotesize /ST\_tW\_antitop\_5f\_NoFullyHadronicDecays\_TuneCP5\_13TeV-powheg-pythia8 & 920153 & 10.8707 \\
+  \footnotesize/DYJetsToLL\_M-10to50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 1836747 & 15910.0\\
+  \footnotesize/DYJetsToLL\_M-50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 800000 & 5379\\
+  \footnotesize/WWTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8 & 780000 & 11.09\\
+  \footnotesize/WZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8 & 994094 & 6.535\\
+  \footnotesize/ZZTo2Q2L\_mllmin4p0\_TuneCP5\_13TeV-amcatnloFXFX-pythia8 &  780170 & 3.676 \\
+  \footnotesize/ttWJetsToLNu\_5f\_EWK\_TuneCP5\_13TeV\_amcatnlo-pythia8 & 825000 & 0.290 \\
+  \footnotesize/TTZToLL\_5f\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 660694 & 0.05188\\
+  \footnotesize/TTWW\_TuneCP5\_13TeV-madgraph-pythia8  & 570000 &  0.006992\\
 
   \hline
 \end{tabular}
@@ -386,9 +496,8 @@ These samples are listed for each year of Run 2 in the Tables [\ref{tab:MC2016}]
 \section{Datasets}
 \label{SEC: DATASET}
 \subsection{Run 2}
-Since the experimental signature has two prompt muons, this analysis makes use of two different data samples :
+Since the experimental signature has two prompt muons, this analysis makes use of one data sample :
 \begin{itemize}
-    \item SingleMuon
     \item DoubleMuon
 \end{itemize}
 % For the electron channel : 
@@ -397,7 +506,7 @@ Since the experimental signature has two prompt muons, this analysis makes use o
 %     \item DoubleElectron
 % \end{itemize}
 
-For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 2016, Table\ref{tab:TRIGGER2017} for 2017 and in Table.\ref{tab:TRIGGER2018} for 2018. 
+The trigger set is given in Table\ref{tab:TRIGGER2016} for 2016, Table\ref{tab:TRIGGER2017} for 2017 and in Table.\ref{tab:TRIGGER2018} for 2018. 
 
 \begin{table}[h]
 \centering
@@ -405,8 +514,8 @@ For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 20
   \hline
   \rowcolor{lightgray} 
   Dataset & Trigger \\
-  \hline
-  SingleMuon & HLT\_IsoMu27\_v \textbf{OR}  HLT\_IsoTkMu24\_v\\
+  % \hline
+  % SingleMuon & HLT\_IsoMu27\_v \textbf{OR}  HLT\_IsoTkMu24\_v\\
   \hline
   DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_v \textbf{OR} HLT\_Mu17\_TrkIsoVVL\_TkMu8\_TrkIsoVVL\_DZ\_v \textbf{OR} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_v  \\
   \hline
@@ -421,8 +530,8 @@ For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 20
   \hline
   \rowcolor{lightgray} 
   Dataset & Trigger \\
-  \hline
-  SingleMuon & HLT\_IsoMu24\_v\\
+  % \hline
+  % SingleMuon & HLT\_IsoMu24\_v\\
   \hline
   DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v \textbf{OR} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8\_v \\
   \hline
@@ -439,8 +548,8 @@ For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 20
   \hline
   \rowcolor{lightgray} 
   Dataset & Trigger \\
-  \hline
-  SingleMuon & HLT\_IsoMu24\_v\\
+  % \hline
+  % SingleMuon & HLT\_IsoMu24\_v\\
   \hline
   DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v \textbf{OR} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8\_v\\
   \hline
@@ -448,8 +557,6 @@ For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 20
     \caption{Trigger for the datasets of 2018}
     \label{tab:TRIGGER2018}
 \end{table}
-
-\FloatBarrier
 
 \begin{table}
     \centering
@@ -480,7 +587,7 @@ The new muon datasets are used:
     \item Muon0 and Muon1 for 2023 and 2024
 \end{itemize}
 
-For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 2022, Table\ref{tab:TRIGGER2017} for 2023 and Table\ref{tab:TRIGGER2018} for 2024. 
+For each data set, the trigger set is given in Table\ref{tab:TRIGGER2022} for 2022, Table\ref{tab:TRIGGER2023} for 2023 and Table\ref{tab:TRIGGER2024} for 2024 with the associated Global tag in Table \ref{tab:DATASETRun3}. 
 
 \begin{table}[h]
 \centering
@@ -488,8 +595,8 @@ For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 20
   \hline
   \rowcolor{lightgray} 
   Dataset & Trigger \\
-  \hline
-  SingleMuon & HLT\_IsoMu27\_v \textbf{OR}  HLT\_IsoTkMu24\_v\\
+  % \hline
+  % SingleMuon & HLT\_IsoMu27\_v \textbf{OR}  HLT\_IsoTkMu24\_v\\
   \hline
   DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_v \textbf{OR} HLT\_Mu17\_TrkIsoVVL\_TkMu8\_TrkIsoVVL\_DZ\_v \textbf{OR} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_v  \\
   \hline
@@ -504,8 +611,8 @@ For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 20
   \hline
   \rowcolor{lightgray} 
   Dataset & Trigger \\
-  \hline
-  SingleMuon & HLT\_IsoMu24\_v\\
+  % \hline
+  % SingleMuon & HLT\_IsoMu24\_v\\
   \hline
   DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v \textbf{OR} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8\_v \\
   \hline
@@ -522,8 +629,8 @@ For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 20
   \hline
   \rowcolor{lightgray} 
   Dataset & Trigger \\
-  \hline
-  SingleMuon & HLT\_IsoMu24\_v\\
+  % \hline
+  % SingleMuon & HLT\_IsoMu24\_v\\
   \hline
   DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v \textbf{OR} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8\_v\\
   \hline
@@ -541,17 +648,17 @@ For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 20
     \rowcolor{lightgray} 
          Year &  Global Tag & Golden JSON \\
     \hline
-         2022 &  \scriptsize  140X_dataRun3_v3 & \scriptsize Cert\_Collisions2022\_355100\_362760\_Golden.json\\
+         2022 &  \scriptsize  140X\_dataRun3\_v3 & \scriptsize Cert\_Collisions2022\_355100\_362760\_Golden.json\\
     \hline
-         2023 &  \scriptsize 140X_dataRun3_v3 & \scriptsize Cert\_Collisions2023\_366442\_370790\_Golden.json\\
+         2023 &  \scriptsize 140X\_dataRun3\_v3 & \scriptsize Cert\_Collisions2023\_366442\_370790\_Golden.json\\
          
     \hline
-         2024 &  \scriptsize 140X_dataRun3_HLT_v3 & \scriptsize
+         2024 &  \scriptsize 140X\_dataRun3\_HLT\_v3 & \scriptsize
          Cert\_Collisions2024\_378981\_384380\_Golden.json\\
     \hline
     \end{tabular}
     \caption{Global tags with the associated Golden JSON file for each year of Run 3}
-    \label{tab:DATASET}
+    \label{tab:DATASETRun3}
 \end{table}
 \FloatBarrier
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -602,27 +709,27 @@ For each data set, the trigger set is given in Table\ref{tab:TRIGGER2016} for 20
 \end{table}
 
 
-Concerning muon corrections, the Rochester Correction \cite{ROCCOR} have been applied on the Monte-Carlo samples according to the Muon POG recommendations in order to correct the momentum scale and resolution of muons for each year of Run 2.
+Concerning muon corrections, the Rochester Correction \cite{ROCCOR} have been applied on the Monte Carlo samples according to the Muon POG recommendations in order to correct the momentum scale and resolution of muons for each year of Run 2.
 
     In addition to the Rochester Correction, the scale factors for the muons are computed according to the Muon POG \cite{MuonSpark1}\cite{MuonSpark2} using the Spark T\&P tool for both Run 2 and Run 3. This tool is used to correct the discrepancy between data and MC for the muons but also for the trigger used (only for the muon channel). Scale factors are given in bins of $p_T$ and $\eta$ in Fig.\ref{fig:SP1}.
     \label{Spark}
 
 \begin{figure}
     \centering
-    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Spark/NUM_probe_isTight_DEN_TrackerMuons_abseta_pt.pdf}
-    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Spark/NUM_probe_MiniIsoTight_DEN_probe_isTight_abseta_pt.pdf}
-    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Spark/NUM_IsoMu24_or_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_DEN_MiniIsoTight_and_TightID_abseta_pt.pdf}
+    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/NUM_TightID_DEN_TrackerMuons.pdf}
+    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/NUM_MiniIsoTight_DEN_TightID.pdf}
+    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/NUM_Trigger_DEN_MiniIsoTight.pdf}
     \caption{ Distribution of the muon scale factors in bins of $p_T$ and $\eta$. The top figure correspond to the identification SF $\epsilon^{\mu}_{ID|TRK}$, the middle figure corresponds to the isolation SF $\epsilon^{\mu}_{ISO|ID}$ and the bottom figure corresponds to the trigger SF $\epsilon^{\mu}_{Trigger|ISO}$.}
     \label{fig:SP1}
 \end{figure}
 
     In order to match the online and offline selection of the analysis, the following selection is applied for the computation of the scale factors with Spark on the $Z\rightarrow\mu\mu$ resonance:\\
     \begin{enumerate}
-        \item for 2016 : tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and (HLT\_IsoMu24\_v ==1 or \\ tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_v ) and pair\_mass $>$ 10
+        \item for 2016 : tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_v and pair\_mass $>$ 10
         
-        \item for 2017 : tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and (tag\_HLT\_IsoMu27\_v ==1 or \\ tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v == 1 or \\ tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8\_v ) and pair\_mass $>$ 10
+        \item for 2017 : tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and ( tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v == 1 or \\ tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8\_v ) and pair\_mass $>$ 10
         
-        \item for 2018 :  tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and (tag\_HLT\_IsoMu24\_v ==1 or \\ tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v == 1  ) and pair\_mass $>$ 10
+        \item for 2018 :  tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v == 1  and pair\_mass $>$ 10
     \end{enumerate}
 
 The final scale factor is defined as the combination of four efficiencies :
@@ -845,7 +952,7 @@ The goal of the analysis is to reconstruct one vertex per hemisphere.
 \begin{figure}[ht]
 \centering
 \includegraphics[height=14cm, width=17cm, trim= 2cm 0cm 0cm 0.cm,clip]{images/Topology/dPhi_GenGen.pdf}
-\caption{\label{fig:dRNEUNEU} Top Left : $\Delta R$ between the two generated neutralinos. Top Right :  $\Delta \phi$ between the two generated neutralinos. Bottom Left : $\Delta R$ between the two reconstructed hemispheres. Bottom Right : $\Delta R$ between the generated neutralino and reconstructed hemisphere.  }
+\caption{\label{fig:dRNEUNEU} Top Left : $\Delta R$ between the two generated neutralinos. Top Right :  $\Delta \phi$ between the two generated neutralinos. Bottom Left : $\Delta R$ between the two reconstructed hemispheres. Bottom Right : $\Delta R$ between the generated neutralino and reconstructed hemisphere. The last plot shows a quite long tail indicating a mis-reconstruction of the axis in some cases, potentially when the neutralino decays outside of the tracker (or close to the end of the tracker) or an overlap between the two hemispheres.}
 \end{figure}
 
 \begin{figure}[ht]
@@ -883,7 +990,7 @@ The goal of the analysis is to reconstruct one vertex per hemisphere.
 
     
     \subsection{Tracks from $V^0$ candidates}
-        $V^0$ candidates stands for two hadrons : the $K^0_S$ meson and the $\Lambda^{0}$ baryon. These hadrons are produced from the hadronisation of the strange quark. They have a long lifetime (about $10^{-10}$ s) and produce  displaced vertices with a lower track multiplicity (2-tracks vertices) compared to signal vertices (between 6 and 10 jets). Therefore, these vertices can be identified and the tracks associated to these vertices can be removed from the workflow and not be used later.
+        $V^0$ candidates stands for two hadrons : the $K^0_S$ meson and the $\Lambda^{0}$ baryon. These hadrons are produced from the hadronization of the strange quark. They have a long lifetime (about $10^{-10}$ s) and produce  displaced vertices with a lower track multiplicity (2-tracks vertices) compared to signal vertices (between 6 and 10 jets). Therefore, these vertices can be identified and the tracks associated to these vertices can be removed from the workflow and not be used later.
          As stated above, CMSSW already gives a collection of the $V^0$ candidates \cite{V0CAND} but there are not directly used. Using a copy of the CMSSW code to built the $V^0$ candidates and changing it to MiniAOD, see Appendix.\ref{APP: COVMAT} and \ref{APP: FIRSTHIT}, we reconstruct the  $V^0$ candidates using the Kalman Filter \cite{KVF} by looking at any pair of tracks of opposite signs, potentially signal tracks.\\
         If all the conditions from CMSSW are passed and a $V^0$ candidate is built, the tracks associated to this candidate are removed from the analysis considering a tighter selection in mass compared to the CMSSW collection, see Fig.\ref{fig:V0Candidates}.\\
 
@@ -893,8 +1000,8 @@ The goal of the analysis is to reconstruct one vertex per hemisphere.
 \begin{figure}[ht]
 %\centering
 \hspace{-1.4cm}
-\includegraphics[height=7.5cm, width=9cm, trim= 0cm 6.5cm 10cm 0.cm,clip]{images/V0Candidates/V0Mass.pdf}\includegraphics[height=7.5cm, width=9cm, trim= 10cm 6.5cm 0cm 0.cm,clip]{images/V0Candidates/V0Mass.pdf}
-\caption{\label{fig:V0Candidates} Mass plots of the V0 candidates from a the MuonEG data sample of 2018}
+\includegraphics[height=8.5cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/V0Candidates/DoubleMuon_UL2018_MiniAODv2_GT36-v1_hData_reco_K0_mass_.pdf}\includegraphics[height=8.5cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/V0Candidates/DoubleMuon_UL2018_MiniAODv2_GT36-v1_hData_reco_L0_mass_.pdf}
+\caption{\label{fig:V0Candidates} Mass plots of the V0 candidates from the DoubleMuon data sample of 2018}
 \end{figure}
 
 
@@ -943,19 +1050,26 @@ The goal of the analysis is to reconstruct one vertex per hemisphere.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[height=6cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/Z_R_Selec.pdf}\includegraphics[height=6cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/Z_R_TrackerMatched.pdf}
-\caption{\label{fig:longVeto} Longitudinal distribution of secondary interactions}
+\includegraphics[height=9cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/DoubleMuon_UL2018_MiniAODv2_GT36-v1_hData_reco_SecInt_rz_Selec.pdf}\includegraphics[height=9cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/DoubleMuon_UL2018_MiniAODv2_GT36-v1_hData_reco_SecInt_rz_TrackerMatched.pdf}
+\caption{\label{fig:longVeto} Longitudinal distribution of secondary interactions for the DoubleMuon data sample}
 \end{figure}
 
 \begin{figure}[ht]
 % \centering
 \hspace{-1 cm}
-\includegraphics[height=9cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/X_Y_Selec_ETA.pdf}\includegraphics[height=9cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/X_Y_TrackerMatched_eta.pdf}
-\caption{\label{fig:Veto} Transverse distribution of secondary interactions for the MuonEG data sample}
+\includegraphics[height=9cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/DoubleMuon_UL2018_MiniAODv2_GT36-v1_hData_reco_SecInt_xy_Selec.pdf}\includegraphics[height=9cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/DoubleMuon_UL2018_MiniAODv2_GT36-v1_hData_reco_SecInt_xy_TrackerMatched.pdf}
+\caption{\label{fig:Veto} Transverse distribution of secondary interactions for the DoubleMuon data sample}
+\end{figure}
+
+\begin{figure}[ht]
+% \centering
+\hspace{-1 cm}
+\includegraphics[height=9cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/DoubleMuon_UL2018_MiniAODv2_GT36-v1_hData_reco_SecInt_xy_Inner_Selec.pdf}\includegraphics[height=9cm, width=9cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/SecInt/DoubleMuon_UL2018_MiniAODv2_GT36-v1_hData_reco_SecInt_xy_Inner_TrackerMatched.pdf}
+\caption{\label{fig:InnerVeto} Transverse distribution of secondary interactions in the inner part of the tracker for the DoubleMuon data sample}
 \end{figure}
         \FloatBarrier
 
-    Once the matching is done between the two positions, the tracks associated to the secondary interactions are removed from the workflow. The applied veto is shown in Fig.\ref{fig:longVeto} and Fig.\ref{fig:Veto}.
+    Once the matching is done between the two positions, the tracks associated to the secondary interactions are removed from the workflow. The applied veto is shown in Fig.\ref{fig:longVeto}, Fig.\ref{fig:Veto} and  Fig.\ref{fig:InnerVeto}.
         
     \subsection{Tracks from signal}
         \label{SUB:BDTRK}
@@ -982,21 +1096,21 @@ The goal of the analysis is to reconstruct one vertex per hemisphere.
         %     \label{tab:TRKSEL}
         % \end{table}
         
-        Tracks from the neutralino have a displacement that depends on the decay length of the latter and it can be possibly hard to distinguish background tracks from signal tracks depending on the phase space. A first selection is optimised to reduce the amount of background tracks by requiring a $p_T > 1$  GeV, $\frac{\chi^2}{dof} < 5$ and a transverse impact parameter significance $|\frac{d_{xy}}{\sigma_{xy}}| > 5$ where  $\sigma_{xy}$ is the error on $d_{xy}$. The Fig.\ref{fig:TRKDis} shows the distribution of these 3 variables after the cut between signal and $t\bar{t}$ events. This pre-selection allows to reduce a significant amount of background (about 90\% for $t\Bar{t}$) while keeping 95\% of the signal displaced tracks. \\
+        Tracks from the neutralino have a displacement that depends on the decay length of the latter, and it can be possibly hard to distinguish background tracks from signal tracks depending on the phase space. A first selection is optimised to reduce the number of background tracks by requiring $p_T > 1$ GeV, $\frac{\chi^2}{dof} < 5$ and a transverse impact parameter significance $|\frac{d_{xy}}{\sigma_{xy}}| > 5$ where  $\sigma_{xy}$ is the error on $d_{xy}$. Fig.\ref{fig:TRKDis} shows the distribution of these 3 variables after the cut between signal and $t\bar{t}$ events. This pre-selection allows to reduce a significant amount of background (about 90\% for $t\Bar{t}$) while keeping 95\% of the signal displaced tracks. \\
 
         \begin{figure}[ht]
         \centering
-        \includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0cm,clip]{images/TRK/Track_pt.pdf}
+        \includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0cm,clip]{images/TRK/Pt_TT.pdf}
         \includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0cm,clip]{images/TRK/Track_chi2.pdf}
-        \includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0cm,clip]{images/TRK/Track_drSig.pdf}
-        \caption{\label{fig:TRKDis} Track $p_T$, $\frac{\chi^2}{nDoF}$ and impact parameter distributions. Distributions are show for signal tracks, background tracks in signal events and tracks from $t\bar{t}$. }
+        \includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0cm,clip]{images/TRK/drSig_TT.pdf}
+        \caption{\label{fig:TRKDis} Track $p_T$, $\frac{\chi^2}{nDoF}$ and impact parameter distributions. Distributions are shown for signal tracks, background tracks in signal events and tracks from $t\bar{t}$. }
         \end{figure}
 
         \FloatBarrier
 
 
         \subsubsection{Boosted Decision Tree for track selection}
-        However, these first cuts do not allow to reduce the background at a high enough amount to observe the signal, therefore a multivariate analysis based on a BDT is again performed to discriminate between signal tracks and background tracks. All the details related to this BDT are shown in the Appendix.\ref{APP: TRKBDT}. The input variables are given in Table.\ref{tab:TRKBDTVAR}. One training is performed for each year of data-taking with 2016 being splitted in two parts. 
+        However, these first cuts do not allow to reduce the background at a high enough amount to observe the signal, therefore a multivariate analysis based on a BDT is performed to discriminate between signal tracks and background tracks. All the details related to this BDT are shown in the Appendix.\ref{APP: TRKBDT}. The input variables are given in Table.\ref{tab:TRKBDTVAR}. One training is performed for each year of data-taking with 2016 being splitted into two parts. 
 
         \begin{table}[h]
         \centering
@@ -1032,7 +1146,7 @@ The goal of the analysis is to reconstruct one vertex per hemisphere.
         \label{tab:TRKBDTVAR}
         \end{table}
         
-        Out of this BDT, two working points (WP) are defined for the rest of the workflow : Tight and Loose. The corresponding signal and background efficiencies associated to these WP are given in the Table.\ref{tab:TRKBDTWP}. The tight WP is defined to reduced the background tracks by a factor $10^3$ and the loose WP as a reference to monitor the different backgrounds as well as for the background estimation method. 
+        Out of this BDT, two working points (WP) are defined for the rest of the workflow : Tight and Loose. The corresponding signal and background efficiencies associated with these WP are given in the Table.\ref{tab:TRKBDTWP}. The tight WP is defined to reduce the background tracks by a factor $10^3$ and the loose WP as a reference to monitor the different backgrounds, as well as for the background estimation method. 
 
         \begin{table}[h]
 \centering
@@ -1041,15 +1155,20 @@ The goal of the analysis is to reconstruct one vertex per hemisphere.
   \rowcolor{lightgray} 
   WP & BDT value & Signal Efficiency (\%) & Background Rejection  (\%)\\
   \hline
+      Tight 2024 & 0.94 & 73 & 99.5 \\
+      Tight 2023Post & 0.94 & 73 & 99.5 \\
+      Tight 2023Pre & 0.94 & 73 & 99.5 \\
+      Tight 2022Post & 0.94 & 73 & 99.5 \\
+      Tight 2022Pre & 0.94 & 73 & 99.5 \\
     Tight 2018 & 0.94 & 73 & 99.5 \\
     Tight 2017 & 0.94 & 73 & 99.5 \\
     Tight 2016Post & 0.93 & 73 & 99.5 \\
     Tight 2016Pre & 0.92 & 73 & 99.5 \\
     \hline
-    Loose Run2 & 0 & 92 & 94 \\
+    Loose & 0 & 92 & 94 \\
   \hline
 \end{tabular}
-    \caption{Working Point for the track selection BDT}
+    \caption{Working Point for the track selection BDTs for Run 2 and 3}
     \label{tab:TRKBDTWP}
 \end{table}
 
@@ -1068,7 +1187,7 @@ Since the BDT is trained for a specific neutralino lifetime, the selection effic
 \subsubsection{Dependence of the track selection BDT with respect to the difference of mass between the neutralino and the smuon}
    \begin{figure}[ht]
 \centering
-\includegraphics[height=10cm, width=11cm, trim= 0cm 0cm 0cm 0cm,clip]{images/TRKBDT/plotBDTTRK_dm.pdf}
+\includegraphics[height=10cm, width=11cm, trim= 0cm 0cm 0cm 0cm,clip]{images/BDT/plotBDTTRK_dm.pdf}
 \caption{\label{fig:BDTctau} Track BDT score distributions for different $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^{1}_{0}}$ for a $c\tau$. = 10.0 cm }
 \end{figure}
 
@@ -1115,7 +1234,7 @@ The BDT score distribution as a function of $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^
      A first collection of tracks is built for each hemisphere out of the tight WP and a second one using the loose WP. The vertexing will then be performed in 2 steps for each hemisphere for each WP in order to reconstruct one vertex per hemisphere. A detail of the vertexing workflow is given below.
     
     \subsection{Multi-step vertexing}
-        In this analysis, one vertex is reconstructed per hemisphere knowing the complexity of the sub-structure of the displaced jets. Further improvement could be potentially obtained by looking for tertiary vertices coming from the b-jets but these jets can be hard to identify since b-tagging does not apply to largely displaced jets (dozens of centimeters) and also due to the decrease in resolution of the vertices.\\
+        In this analysis, one vertex is reconstructed per hemisphere. Further improvement could be potentially obtained by looking for tertiary vertices coming from the b-jets but these jets can be hard to identify since b-tagging does not apply to largely displaced jets (dozens of centimeters) and also due to the decrease in resolution of the vertices.\\
 
         For each hemisphere, the tracks are ordered by decreasing BDT score. Then, instead of directly giving a set of tracks to the AVF, we only give the first two tracks for which a valid vertex (eventually with a supplementary 0$<\frac{\chi^2_{vtx}}{DoF}<$10 criterion) is reconstructed. Then, we iterate this procedure by adding one track after the other. The tracks that do not allow for the reconstruction of a vertex are removed. In practice, four steps are defined :
     \begin{itemize}
@@ -1138,7 +1257,7 @@ The BDT score distribution as a function of $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^
 
         In this multi-step vertexing, some tracks are removed if they do not respect the criteria that the first hit of any track must come after the position of the vertex that is built or the newly added track does not allow to reconstruct a valid vertex. Out of these removed tracks, there is a possibility that these tracks belong to a tertiary displaced vertices coming from b-jets or real signal vertices. However, applying the AVF on the removed tracks has not shown any improvement in the vertex reconstruction efficiency.
     
-    \textcolor{black}{However in 10\% to 30\% of the cases, the two reconstructed vertices are too close from each other, below the vertex resolution. A merging step is therefore needed by combining the two vertices. The remaining tracks are used to look for another secondary vertex.}\\
+    \textcolor{black}{In 10\% to 30\% of the cases, the two reconstructed vertices are too close to each other, below the vertex resolution. Therefore, a merging step is needed by combining the two vertices. The remaining tracks are used to look for another secondary vertex.}\\
     \subsection{Vertex Merging}
         
         The multi-step vertexing has the goal of reconstructing one vertex per hemisphere. Even if the two hemispheres are well reconstructed (opposite in $\phi$ and close to the generated neutralino axis), it happens that two reconstructed vertices are really close in the 3D-space and pointing to the same neutralino meaning the 3-d distance between the two vertices can be below the resolution level. A merging step is implemented as well as a new search of displaced vertex.
@@ -1146,7 +1265,8 @@ The BDT score distribution as a function of $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^
         \subsubsection{Merging}
             Since a tight and loose working point are defined for the vertices, one has to be careful when combining the information (mass, number of tracks, $\frac{\chi^2}{dof}$, position, quality) about the two close vertices.
             \begin{itemize}
-                \item When both vertices are loose or tight, the mean position between the two original vertices is taken as the new position of the merged vertex. This approximation has been verified to be good since applying the AVF to the collections of tracks of the two original vertices gave a vertex at mean distance between the two original vertices (and both vertices are already close in position $\sim$ 1 mm). The approximation was made in order to gain computing time and avoid the AVF to crash for any reason and lose a vertex. The mass of the new vertex is the sum of the two original masses, the $\frac{\chi^2}{dof}$ is defined as the average $\frac{\chi^2}{dof}$ of the two original vertices and the tracks are just added together to define the new track multiplicity. If the two vertices are tight, the final vertex is defined as tight and if the two vertices are loose, then the final vertex is defined as loose.               
+                \item When both vertices are loose or tight, the mean position between the two original vertices is taken as the new position of the merged vertex. This approximation has been verified to be good since applying the AVF to the collections of tracks of the two original vertices gave a vertex at mean distance between the two original vertices (and both vertices are already close in position $\sim$ 1 mm). The approximation was made in order to gain computing time and avoid the AVF to crash for any reason and lose a vertex. The mass of the new vertex is the sum of the two original masses, the $\frac{\chi^2}{dof}$ is defined as the average $\frac{\chi^2}{dof}$ of the two original vertices and the tracks are just added together to define the new track multiplicity. If the two vertices are tight (loose), the final vertex is defined as tight (loose).
+                
                 \item When one of the vertex is loose and the other one is tight, the tight vertex is taken as the final vertex with all its associated information  (mass, number of tracks, $\frac{\chi^2}{dof}$, position). The final vertex is defined as tight.
             \end{itemize}
         The definition of the quality tag for merging enables to keep the tight vertices that we expect to be good signal vertices and remove potentially background (signal-like) vertices. However, we lose one vertex by doing this procedure. In order to potentially have 2 vertices in an event that needs merging, a second vertex is searched for. The probability of having to merge two vertices is shown in Fig.\ref{fig:MERGE} on the left plot.
@@ -1214,7 +1334,7 @@ Finally, the vertex reconstruction efficiency is shown as a function of the smuo
 \section{Event reweighting}
     \label{EVENT_W}
     \subsection{Reweighting from generation}
-        The reweighting of the different MC samples is performed at the generator level using : \cite{LHEReaderCMSSW}.
+        The reweighting of the different MC samples is performed at the generator level using \cite{LHEReaderCMSSW}.
     \subsection{PileUp}
         Pile-up distributions tend to be different between data and MC. A pile-up reweighing is therefore needed to make up for the discrepancies. The reweighting procedure is detailed in : \cite{PileupMCReweightingUtilities}.
         
@@ -1318,7 +1438,7 @@ Dataset(pp collision 2017) & $\cal L$ (\fbinv) \\\hline
 Dataset(pp collision 2018) & $\cal L$ (\fbinv) \\\hline
  /MuonEG/Run2018A-UL2018\_MiniAODv2\_GT36-v1/MINIAOD      &  11.41 \\
  /MuonEG/Run2018B-UL2018\_MiniAODv2\_GT36-v1/MINIAOD    & 7.06 \\
-  MuonEG/Run2018C-UL2018\_MiniAODv2\_GT36-v1/MINIAOD     & 6.89  \\
+  /MuonEG/Run2018C-UL2018\_MiniAODv2\_GT36-v1/MINIAOD     & 6.89  \\
   /MuonEG/Run2018D-UL2018\_MiniAODv2\_GT36-v1/MINIAOD     & 30.02 \\ \hline
 Total  & 59.80 \\ \hline
 \end{tabular}
@@ -1923,7 +2043,7 @@ Scale Factor       & 0.94      & 1.01      & 0.96 \\\hline
 \newpage
 \section{Systematic Uncertainties}
 \label{SEC: SYST}
-This analysis relies on the study of simulated Monte-Carlo samples. Given that all physic quantities are not perfectly modelled and simulated, systematic effects arise from the study of the Monte-Carlo samples. These effects can come from the trigger efficiencies, pile-up, detector effects, particle identification and potentially changing the shape of the different distributions of this analysis.
+This analysis relies on the study of simulated Monte Carlo samples. Given that all physic quantities are not perfectly modelled and simulated, systematic effects arise from the study of the Monte Carlo samples. These effects can come from the trigger efficiencies, pile-up, detector effects, particle identification and potentially changing the shape of the different distributions of this analysis.
 
 The systematic parameters mentioned in the following sections are varied both positively and negatively of one sigma from the nominal value. These variations will be referenced as up and down, respectively. The final analysis of these systematic effect is shown in Table.[add table from combine].
 
@@ -1936,10 +2056,10 @@ The systematic parameters mentioned in the following sections are varied both po
         The measurement on the integrated luminosity delivered to CMS during Run 2 for the UL samples comes with uncertainties. The method applied to compute these quantities are described in \cite{Sirunyan_2021} for 2015/2016, in \cite{CMS:LUM-17-004} for 2017 and \cite{CMS-PAS-LUM-18-002} for 2018. The LumiPOG has defined the luminosity uncertainty to 1.6\% for the total integrated luminosity of Run 2. The individual uncertainties for each year are : 1.2\% for 2016, 2.3\% for 2017 and 2.5\% for 2018.
     \pagebreak
     \subsection{Trigger systematics}
-        The trigger efficiency is computed using the Tag\&Probe technique from Spark provided by the MuonPOG. Using the Z resonance, one muon is constrained following the selections of the analysis and defined as the tag muon and has to fire one of the muon triggers used. The other muon is referred as the probe muon and is also following the selections of the analysis on the muons. To compute the efficiency, the test that is performed is whether the probe muon fires the trigger used in the analysis. This efficiency is computed for each year of Run 2 with their associated triggers. The full selections are described in \ref{Spark}. \textcolor{red}{raiot of Data/MC on trigger efficiency}
+        The trigger efficiency is computed using the Tag\&Probe technique from Spark provided by the MuonPOG. Using the Z resonance, one muon is constrained following the selections of the analysis and defined as the tag muon and has to fire one of the muon triggers used. The other muon is referred as the probe muon and is also following the selections of the analysis on the muons. To compute the efficiency, the test that is performed is whether the probe muon fires the trigger used in the analysis. This efficiency is computed for each year of Run 2 and Run 3 with their associated triggers. The full selections are described in \ref{Spark}. \textcolor{red}{raiot of Data/MC on trigger efficiency}
     \pagebreak
     \subsection{Pileup uncertainties}
-        The recommended total pp inelastic cross section for Run2 by the LumiPOG is 69.2 mb \cite{PileupSystematicErrors}. The uncertainty on this measurement is set to 4.6\% for Run 2. This uncertainty can be increased if the data to MC differences are not covered following the recommendations of LumiPOG.
+        The recommended total pp inelastic cross section for Run2 by the LumiPOG is 69.2 mb \cite{PileupSystematicErrors}. The uncertainty on this measurement is set to 4.6\% for both Run 2 and Run 3. This uncertainty can be increased if the data to MC differences are not covered following the recommendations of LumiPOG.
     % https://twiki.cern.ch/twiki/bin/view/CMS/PileupJSONFileforData
     \pagebreak
     \subsection{Jet energy scale and resolution}
@@ -2009,14 +2129,15 @@ In this paper, a search for displaced top quark through the decay of a massive l
 %------------------- SECTION ----------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Monte-Carlo generation of signal samples}
+\subsection{Monte Carlo generation of signal samples}
 \label{APP: GEN}
-The generation of the RPV-Process is made using the MADGRAPH5\_aMC@NLO (MG5) generator. Since there is no explicit Universal FeynRules Output (UFO, see \cite{UFO}) model dedicated to the RPV-process studied, a private model has been developed taking into account the constraints from MG5 such as the non-possibility of the lightest neutralino (LSP) to decay. In the following, the lightest neutralino at the MG5 level will be $\chi^2_{0}$ (mentioned as sl2 or sl5 in MG5) since MG5 allows for its decay. To proceed to the generation, the merging between Pythia8 \cite{bierlich2022comprehensive} and MG5 for the hadronisation part has to be defined then the generation of events with the needed input parameters.
+The generation of the RPV process is made using the MADGRAPH5\_aMC@NLO (MG5) generator. Since there is no explicit Universal FeynRules Output (UFO, see \cite{UFO}) model dedicated to the RPV-process studied, a private model has been developed taking into account the constraints from MG5 such as the non-possibility of the lightest neutralino (LSP) to decay. In the following, the lightest neutralino at the MG5 level will be $\chi^2_{0}$ (mentioned as sl2 or sl5 in MG5) since MG5 allows for its decay. To proceed with the generation, the merging between Pythia8 \cite{bierlich2022comprehensive} and MG5 for the hadronization part has to be defined, then the generation of events with the needed input parameters.
 For the first part, the value of merging (also know as "xqcut") is given by the MC\&I contact. The generation is detailed below. The private model is called "DisplacedTopUDD".
 \subsubsection{Parameterization}
 
 The event generation of the pair-production of neutralino is done at LO+1 jet as an initial state radiation (ISR).
-The commands given are used to generate the signal : \\
+The commands given are used to generate the signal : 
+% \\
 \begin{enumerate}
     \item import model DisplacedTopUDD --modelname
     \item generate p p  $>$ sl2+ sl2- / h01 h02 a0 n1 n2 n3 n4, (sl2+ $>$ n2 mu+, n2\
@@ -2058,7 +2179,7 @@ where SELMIX is the MG5 block for the slepton mixing matrix \cite{Allanach_2009}
 \end{pmatrix}$
 \end{center}
 
-In order to make comparison with other models studying the pure left-handed state and the pure right-handed state, SELMIX is also defined for these pure states :
+In order to compare with other models studying the pure left-handed state and the pure right-handed state, SELMIX is also defined for these pure states :
 
 \begin{center}
      $\begin{pmatrix}
@@ -2070,9 +2191,10 @@ In order to make comparison with other models studying the pure left-handed stat
   0 & 0 & 0 & 0 & 0 & 0  \\
 \end{pmatrix}$
 \end{center}
- The pure right-handed and left-handed states do not have the same cross-section for a given mass of the slepton. Indeed, the pure left-handed state has a higher cross-section potentially leading to better exclusion of this state compared to the pure right-handed state, see Table.\ref{tab:LEFTXS} and \ref{tab:RIGHTXS}. \\
+ The pure right-handed and left-handed states do not have the same cross-section for a given mass of the slepton. Indeed, the pure left-handed state has a higher cross-section potentially leading to better exclusion of this state compared to the pure right-handed state, see Tables~\ref{tab:LEFTXS} and \ref{tab:RIGHTXS}. 
+ %\\
 
- \subsubsection{Generation and Hadronisation}
+ \subsubsection{Generation and Hadronization}
 The SELMIX matrix is injected into the param\_card of MG5 to produce the signal samples.
 Then, the parameters used for generating the LHE file are the following:
 \begin{table}[h]
@@ -2082,7 +2204,7 @@ Then, the parameters used for generating the LHE file are the following:
     \rowcolor{lightgray} 
     Parameter & Value & Definition\\
     \hline 
-    shower program & Pythia8 & Hadronisation \\
+    shower program & Pythia8 & Hadronization \\
     \hline
     pdflabel & lhapdf & PDF set  \\ 
     \hline
@@ -2100,17 +2222,16 @@ Then, the parameters used for generating the LHE file are the following:
 \label{TAB : GENPARA}
 \end{table}
 \FloatBarrier 
-The merging value ("xqcut") between MG5 and Pythia8 is the one provided by the Monte-Carlo contact : between 20 and 30. This value was also recovered by generating signal samples for different values of xqcut, from 1 to 100. The LHE output file is then used to produce the signal samples by running the "cmsDriver" commands.
+The merging value ("xqcut") between MG5 and Pythia8 is the one provided by the Monte Carlo contact : between 20 and 30. This value was also recovered by generating signal samples for different values of xqcut, from 1 to 100. The LHE output file is then used to produce the signal samples by running the "cmsDriver" commands.
 
-\subsubsection{Central Production}
-    The $c\tau 0$ of the neutralino has to follow an exponential distribution of the mean value defined by the user (the values used are: 1mm, 3mm, 1cm, 3cm , 10cm, 30cm, 100cm in order to probe the tracker volume). The full process is described below :
+\subsubsection{Central Production (MC\&I request)}
+    The $c\tau_0$ of the neutralino has to follow an exponential distribution of the mean value defined by the user : 1~mm, 3~mm, 1~cm, 3~cm , 10~cm, 30~cm, 100~cm in order to probe the tracker volume. In order to produce LHE files with a specific mean $c\tau_0$, a few steps are needed and described below:
         \begin{itemize}
-            \item Extract the generated tarball 
-            \item Copy the python script with the defined $c\tau$ into the tarball directory
-            \item The "runcmsgrid.sh" file also has to be changed in order to call the python script
-            \item Compress the original tarball directories with the new python and bash files in order to get the gridpack
+            \item Extract the generated basic tarball 
+            \item Copy the python script that changes the $c\tau$ in the LHE file with a defined $c\tau$ into the tarball directory
+            \item The "runcmsgrid.sh" file also has to be changed (at the very end) in order to call the python script
+            \item Compress the original tarball directories with the new python and bash files in order to get the final gridpack
         \end{itemize}
-        For the production of the LHE files, a dedicated script
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2138,7 +2259,7 @@ In the MiniAOD format, due to the approximation of this matrix, the latter is no
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{First hit retrieval}
 \label{APP: FIRSTHIT}
-This analysis used to be performed on the  MiniAOD data-format following the request of the CMS group to reduce computing time/file size. However, this change induces several changes such as the loss of the position of the first-hit of the tracks. This loss can be characterized in two ways : one for the packedPFCandidate and one for the lostTracks collection. In MiniAOD data-format, the only information about the position of the first-hit of the tracks is the layer of the first-hit. It is registered as an 11-bit number that can be interpreted as a 4-digits number also called hitpattern \cite{HP}. Concerning the lostTracks collection, the 4-digits number is not registered correctly leading to no first-hit information at all. A correction is applied on Run 3 for 2023 and beyond. Concerning the packedPFCandidate collection, this 4-digit number is stored correctly and can be used to retrieve the first-hit position of the tracks using track parameters and propagators. The needed track parameters are the following : momentum , $\eta$, $\phi$, the distance of closest approach of the center of CMS (reference point) along the longitudinal axis, the state of the track at the reference point defined as a 6-dimensional state matrix with the associated error matrix, and the hitpattern mentioned above. The 6-dimensional state matrix parameters are the position (defined in the global frame), the momentum, the charge, the signed inverse momentum (charge divided by the magnitude of the momentum) and the transverse curvature ( Transverse curvature kappa which is the inverse radius of curvature in the transverse plane) in $cm^{-1}$. Sign convention is such that positive kappa means counterclockwise rotation of the track with respect to the global z-axis.). \\
+This analysis used to be performed on the  MiniAOD data-format following the request of the CMS group to reduce computing time/file size. However, this change induces several changes such as the loss of the position of the first-hit of the tracks. This loss can be characterized in two ways : one for the packedPFCandidate and one for the lostTracks collection. In MiniAOD data-format, the only information about the position of the first-hit of the tracks is the layer of the first-hit. It is registered as an 11-bit number that can be interpreted as a 4-digits number also called hitpattern \cite{HP}. Concerning the lostTracks collection, the 4-digits number is not registered correctly leading to no first-hit information at all. A correction is applied on Run 3 for 2022 and beyond. Concerning the packedPFCandidate collection, this 4-digit number is stored correctly and can be used to retrieve the first-hit position of the tracks using track parameters and propagators. The needed track parameters are the following : momentum , $\eta$, $\phi$, the distance of closest approach of the center of CMS (reference point) along the longitudinal axis, the state of the track at the reference point defined as a 6-dimensional state matrix with the associated error matrix, and the hitpattern mentioned above. The 6-dimensional state matrix parameters are the position (defined in the global frame), the momentum, the charge, the signed inverse momentum (charge divided by the magnitude of the momentum) and the transverse curvature ( Transverse curvature kappa which is the inverse radius of curvature in the transverse plane) in $cm^{-1}$. Sign convention is such that positive kappa means counterclockwise rotation of the track with respect to the global z-axis.). \\
 
 With this set of parameters with their associated errors, propagators are then used to retrieve the position of the first-hit. There are two different propagators used for this procedure, depending on the region of propagation : barrel or endcap. For the endcap region, the StraightLinePlaneCrossing propagator is used and the analytical propagator is used for the barrel region \cite{PROP}. If the propagators fail, a geometric estimation of the position of the first-hit of the track is done using $\eta$, $\phi$ and the distance of closest approach of the center of CMS (reference point) along the longitudinal axis. The output of the propagators is shown in Fig.\ref{fig:BPIXL1PROPA} for TIB L1. \textcolor{black}{The resolution on the first-hit of the tracks is given in Table.\ref{tab:FIRSTHITRES}}.
 
@@ -2239,7 +2360,7 @@ With this set of parameters with their associated errors, propagators are then u
 \label{APP: TRKBDT}
  The final selection of displaced tracks for the reconstruction of vertices is performed using the Toolkit For Multivariate Data Analysis (TMVA) available in ROOT \cite{hoecker2009tmvatoolkitmultivariate}. This toolkit allows for many implementations of multivariate data analysis techniques, from the BDT to Convolution Neural Networks. In this analysis, we make use of the BDT to distinguish signal displaced tracks with respect to prompt tracks from SM backgrounds.  The BDT implementation needs three steps : training, testing and "verification". The first two are performed by root while the third one has to be performed by the analyzers to monitor the theoretical and observed outputs.\\
  
- For the selection of tracks, the training has been performed using all the signal samples having a $c\tau$ = 10 cm for the neutralino with 300k tracks. For the backgrounds, the training has been performed using data on the MuonEG sample (VR). A total of 300k tracks have been used for the background samples for the training (300k for testing). 
+ For the selection of tracks, the training has been performed using all the signal samples having a $c\tau$ = 10 cm for the neutralino with 300k tracks. For the backgrounds, the training has been performed using data on the MuonEG sample (Validation region). A total of 300k tracks have been used for the background samples for the training (300k for testing). 
  The input variables for this BDT are the ones given in Table.\ref{tab:TRKBDTVAR} with the distribution for the signal and background given in Fig.\ref{fig:TRKInputs}. The correlations between these variables are given in Fig.\ref{fig:TRKCOR}. The results of the training are provided in Fig.\ref{fig:TRKTraining}. Since no difference of efficiency is observed between training and testing, no over-training is obtained but it is expected that this BDT is trained for specific regions of the phase space and therefore "over-trained" for these regions. \\
  The plot on the right of Fig.\ref{fig:TRKTraining} shows a good discrimination power that can be used to select displaced tracks. Therefore, one working point is defined for this BDT, a tight one (TWP). The TWP is defined such that the rejection power for the background is about $10^3$ (this factor depends on the background sample). This factor is obtained for a value of 0.94 (for 2018 and 2017), 0.93 or 0.92 depending on the period of 2016. This value for the TWP the BDT value giving a signal efficiency of 73\% and background rejection of 99.5\%. This working point will be used to build one collection of tight tracks (TT) that will be then given as an input for the vertexing workflow. The loose working point is also defined as a reference working point to monitor what is happening beyond the tight working point but also to build a background enriched region.
 
@@ -2306,7 +2427,7 @@ $\frac{\chi^2}{dof}$ is between 0 and 10, see Fig.\ref{fig:VTXChi2}, where the $
     \item a first good  vertex (0 $<\frac{\chi^2}{dof}<$ 10) is built out of any pair of tracks from the track collection. This vertex is called the seed. This step makes use of the ordering of the tracks by decreasing value of BDT score. If the first two tracks are not used to build the seed, it iterates over all the remaining tracks but no track is discarded from the vertexing during this procedure. If no seed is found, no vertex is built.
     \item When the seed is built, we add one track after the other to the seed by making sure that after each new track, the newly fitted vertex has a good $\frac{\chi^2}{dof}$. If this criteria is satisfied, it iterates over the remaining tracks. Else, the track that makes the vertex not satisfying the $\frac{\chi^2}{dof}$ criteria is removed from the vertexing.
     \item The final possible outputs are: a good vertex can be obtained, a bad vertex or no vertex at all if no seed is built
-    \item Note : if a track has a hit before the vertex position, the track is discarded. There is an exception for tracks from the lostTracks collection where the information of the first-hit is not stored correctly for Run 2 Monte-Carlo, see Appendix.\ref{APP: FIRSTHIT} 
+    \item Note : if a track has a hit before the vertex position, the track is discarded. There is an exception for tracks from the lostTracks collection where the information of the first-hit is not stored correctly for Run 2 Monte Carlo, see Appendix~\ref{APP: FIRSTHIT} 
 \end{enumerate}
 \begin{figure}[ht]
 \centering
@@ -2314,23 +2435,6 @@ $\frac{\chi^2}{dof}$ is between 0 and 10, see Fig.\ref{fig:VTXChi2}, where the $
 \caption{\label{fig:VTXChi2} $\frac{\chi^2}{dof}$ distribution for signal and $t\bar{t}$ vertices}. 
 \end{figure} 
 \pagebreak
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%------------------- SECTION ----------------------------------
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\linewidth]{images/eff_ctau_240416.png}
-    \caption{Enter Caption}
-    \label{fig:enter-label}
-\end{figure}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2517,6 +2621,6 @@ Finally, the Boost Monitor helps verifying that the BDT converges well and "quic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{references}
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 
 \end{document}
