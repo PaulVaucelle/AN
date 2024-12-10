@@ -32,6 +32,11 @@
 
 \newcommand{\mic}{$\mu$m\xspace}
 \newcommand{\dxy}{$d_{xy}$\xspace}
+\newcommand{\Ks}{$K^0_S$\xspace}
+\newcommand{\Lam}{$\Lambda$\xspace}
+\newcommand{\dmass}{$\Delta m_{\Tilde{\mu}-\Tilde{\chi}^{1}_{0}}$\xspace}
+\newcommand{\smuon}{$\Tilde{\mu}$\xspace}
+\newcommand{\neutralino}{$\Tilde{\chi}^{1}_{0}$\xspace}
 
 %\newcommand{\pt}{p_{\text T}\xspace}
 \newcommand{\pt}{$p_{\text T}$\xspace}
@@ -115,7 +120,7 @@ Search for a long-lived massive particle decaying into a top quark and light qua
 
 \begin{abstract}
 
-A search for the associated production of a \mumu pair and a pair of massive long-lived particles (LLP), each decaying into a top quark and two light quarks is presented. The data correspond to an integrated luminosity of 300\fbinv recorded in proton-proton collisions at $\sqrt{s} = 13$ and $13.6$ TeV at the LHC. Machine learning technique is used to distinguish displaced charged particles tracks from the LLP and from the Standard Model background. A study is performed relying on reconstructed displaced vertices. Results are interpreted within the R-parity violated Minimal SuperSymmetric model. 
+A search for the associated production of a $\mu\mu$ pair and a pair of massive long-lived particles (LLP), each decaying into a top quark and two light quarks is presented. The data correspond to an integrated luminosity of 309~\fbinv recorded in proton-proton collisions at $\sqrt{s} = 13$ and $13.6$ TeV at the LHC. Machine learning technique is used to distinguish displaced charged particles tracks from the LLP and from the Standard Model background. A study is performed relying on reconstructed displaced vertices. Results are interpreted within the R-parity violated Minimal SuperSymmetric model. 
 \end{abstract}
 
 % Make the review table at the bottom of the title page
@@ -158,7 +163,7 @@ The final state consists of an energetic \mumu pair which can be used to trigger
 \caption{\label{fig:Feyn} Smuon pair production and decay channels.}
 \end{figure}
 
-Data recorded in pp collisions at the LHC at center-of-mass energies of 13~TeV from 2016 to 2018 and 13.6~TeV from 2022 to 2024, corresponding to an integrated luminosity of \textcolor{red}{300} $fb^{-1}$, are used. 
+Data recorded in pp collisions at the LHC at center-of-mass energies of 13~TeV from 2016 to 2018 and 13.6~TeV from 2022 to 2024, corresponding to an integrated luminosity of 309~\fbinv, are used. 
 The analysis focus on the search for the associated production of a \mumu pair and pair-produced long-lived particles which decay into SM particles producing jets and tracks in the tracker volume. The event topology, as well as the tracks and the secondary displaced vertices, are used to discriminate the displaced signature from SM backgrounds. The high hadronic activity helps to improve the sensitivity as compared to previous searches. The results are interpreted in term of smuon pair production within the RPV-MSSM.
 
 
@@ -168,20 +173,23 @@ The analysis focus on the search for the associated production of a \mumu pair a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \newpage
-\section{The CMS detector}
+\section{Detector and event reconstruction}
 \label{SEC: CMS}
 
-The central feature of the CMS apparatus is a superconducting solenoid of 6~m inner diameter, providing a magnetic field of 3.8~T. Within the solenoid volume are a silicon pixel and strip tracker, a lead tungstate crystal electromagnetic calorimeter (ECAL), and a brass and scintillator hadron calorimeter (HCAL), each composed of a barrel and two endcap sections. Forward calorimeters extend the pseudorapidity ($\eta$) coverage provided by the barrel and endcap detectors. A more detailed description of the CMS detector, together with a definition of the coordinate system used and the relevant kinematic variables, can be found in Ref.\textcolor{red}{XX}.
+The central feature of the CMS apparatus is a superconducting solenoid of 6~m inner diameter, providing a magnetic field of 3.8~T. Within the solenoid volume are a silicon pixel and strip tracker, a lead tungstate crystal electromagnetic calorimeter (ECAL), and a brass and scintillator hadron calorimeter (HCAL), each composed of a barrel and two endcap sections. Forward calorimeters extend the pseudorapidity ($\eta$) coverage provided by the barrel and endcap detectors. Muons are identified and measured within the range $|\eta| < 2.4$ by gas-ionization detectors embedded in the steel magnetic flux-return yoke outside the solenoid. A more detailed description of the CMS detector, together with a definition of the coordinate system used and the relevant kinematic variables, can be found in Ref.\textcolor{red}{XX,YY pour Runs 2 et 3}.
+
+Events of interest are selected using a two-tiered trigger system. The first level, referred to as the level-1 (L1) trigger, is composed of custom hardware processors and uses information from the calorimeters and muon detectors to select events at a rate of around 100~kHz within a fixed latency of about 4~\mic~\textcolor{red}{ref.XX}. The second level, known as the high-level trigger, consists of a farm of processors running a version of the full event reconstruction software optimized for fast processing, and reduces the event rate to around 1~kHz before data storage~\textcolor{red}{ref.XX}.
 
 The silicon tracker used in 2016 measured charged particles within the range $|\eta| < 2.5$. For nonisolated particles within the ranges of $1 < p_{\rm T} < 10$~GeV and $|\eta| < 1.4$, the track resolutions were typically 1.5\% in \pt and 25–90~\mic in the transverse impact parameter (\dxy) ~Ref.\textcolor{red}{XX}. At the start of 2017, a new pixel detector was installed~\textcolor{red}{ref.XX}; the upgraded tracker measured particles up to $|\eta| < 3.0$ with typical resolutions of 1.5\% in \pt and 20–75~\mic in \dxy~\textcolor{red}{ref.XX} for nonisolated particles of $1 < p_{\rm T} < 10$~GeV.
 
-A particle-flow (PF) algorithm~\textcolor{red}{ref.XX} aims to reconstruct and identify each individual particle in an event, with an optimized combination of information from the various elements of the CMS detector. The energy of photons is obtained from the ECAL measurement. The energy of electrons is determined from a combination of the electron momentum at the primary interaction vertex as determined by the tracker, the energy of the corresponding ECAL cluster, and the energy sum of all bremsstrahlung photons spatially compatible with originating from the electron track. The energy of muons is obtained from the curvature of the corresponding track. The energy of charged hadrons is determined from a combination of their momentum measured in the tracker and the matching ECAL and HCAL energy deposits, corrected for the response function of the calorimeters to hadronic showers. Finally, the energy of neutral hadrons is obtained from the corresponding corrected ECAL and HCAL energies.
+The primary vertex (PV) is taken to be the vertex corresponding to the hardest scattering in the event, evaluated using tracking information alone, as described in Section 9.4.1 of Ref.\textcolor{red}{ref.XX}.
 
-The primary vertex is taken to be the vertex corresponding to the hardest scattering in the event, evaluated using tracking information alone, as described in Section 9.4.1 of Ref.\textcolor{red}{ref.XX}.
+A particle-flow (PF) algorithm~\textcolor{red}{ref.XX} aims to reconstruct and identify each individual particle in an event, with an optimized combination of information from the various elements of the CMS detector. 
+The energy of photons is obtained from the ECAL measurement. The energy of electrons is determined from a combination of the electron momentum at the PV, the energy of the corresponding ECAL cluster, and the energy sum of all bremsstrahlung photons spatially compatible with originating from the electron track~\textcolor{red}{ref.XX}. The resulting candidate electrons are required to have $p_{\rm T} > 10$~GeV~\textcolor{red}{(?)} and $|\eta| < 2.5$~\textcolor{red}{(?)}. 
+Muons are reconstructed by associating tracks in the muon system with those found in the silicon tracker~\textcolor{red}{ref.XX}. Muon candidates are required to satisfy $p_{\rm T} > 3$~GeV and $|\eta| < 2.4$.
+The energy of charged hadrons is determined from a combination of their momentum measured in the tracker and the matching ECAL and HCAL energy deposits, corrected for the response function of the calorimeters to hadronic showers. Finally, the energy of neutral hadrons is obtained from the corresponding corrected ECAL and HCAL energies.
 
 For each event, hadronic jets are clustered from PF candidates using the infrared- and collinearsafe anti-kT algorithm~\textcolor{red}{ref.XX,YY} with a distance parameter of 0.4. Jet momentum is determined as the vectorial sum of all particle momenta in the jet, and is found from simulation to be, on average, within 5 to 10\% of the true momentum over the entire \pt spectrum and detector acceptance. Additional pp interactions within the same or nearby bunch crossings (referred to as pileup) can contribute additional tracks and calorimetric energy depositions to the jet momentum. To mitigate this effect, charged particles identified to be originating from pileup vertices are discarded and an offset correction is applied to correct for remaining contributions. Jet energy corrections are derived from simulation to bring the measured response of jets to that of particle level jets on average. In situ measurements of the momentum balance in dijet, photon+jet, Z+jet, and multijet events are used to account for any residual differences in the jet energy scale between data and simulation [39]. The jet energy resolution amounts typically to 15–20\% at 30~GeV and 10\% at 100~GeV~\textcolor{red}{ref.XX}. Additional selection criteria are applied to each jet to remove jets potentially dominated by anomalous contributions from various subdetector components or reconstruction failures~\textcolor{red}{ref.XX}.
-
-Events of interest are selected using a two-tiered trigger system. The first level, referred to as the level-1 (L1) trigger, is composed of custom hardware processors and uses information from the calorimeters and muon detectors to select events at a rate of around 100~kHz within a fixed latency of about 4~\mic~\textcolor{red}{ref.XX}. The second level, known as the high-level trigger, consists of a farm of processors running a version of the full event reconstruction software optimized for fast processing, and reduces the event rate to around 1~kHz before data storage~\textcolor{red}{ref.XX}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,10 +198,10 @@ Events of interest are selected using a two-tiered trigger system. The first lev
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \newpage
-\section{MC simulation}
+\section{Simulation}
 \label{SEC: MC}
 
-Signal events are generated using the MADGRAPH5\_aMC@NLO~2.6.5 generator~\cite{MAD} at leading order (LO) in quantum chromodynamic (QCD), plus the possibility of one additional jet from initial-state radiation. The smuon mass, $m_{\Tilde{\mu}}$, is considered from 200 to 500~GeV, where the lower bound is constrained by the request of a top quark in the final state and from previous experimental limits~\cite{ATLAS1,ATLAS2,ATLAS3,CMS1,ATLAS4,CMS2,ATLAS5}, and the upper bound is motivated by the expected production cross section which decreases as $m_{\Tilde{\mu}}$ to reach $\sim 0.1$~fb at $m_{\Tilde{\mu}} = 500$~GeV. The mass of the neutralino, $m_{\Tilde{\chi}_{0}^{1}}$, is set between the kinematical limit of 180~GeV and $m_{\Tilde{\mu}} - 20$~GeV. Steps of 50~GeV are considered both for the $m_{\Tilde{\mu}}$ and $m_{\Tilde{\chi}_{0}^{1}}$ ranges. The proper lifetime of the neutralino, $c\tau_0$, is set at several values between 0.1 and 100~cm in order to probe the acceptance of the tracker. The signal events are then simulated using PYTHIA 8.240~\textcolor{red}{ref.XX} with the CP5 tune~\textcolor{red}{ref.XX} and the NNPDF3.1 leading-order (LO)~\textcolor{red}{ref.XX} set of parton distribution functions (PDFs). The MLM~\textcolor{red}{ref.XX} prescription of matching jets from matrix element calculations to those from parton showers is applied. The procedure, which involves ~240 mass and $c\tau_0$ values, is repeated for each data taking year periods.
+Signal events are generated using the MADGRAPH5\_aMC@NLO~2.6.5 generator~\cite{MAD} at leading order (LO) in quantum chromodynamic (QCD), plus the possibility of one additional jet from initial-state radiation. The smuon mass, $m_{\Tilde{\mu}}$, is considered from 200 to 500~GeV, where the lower bound is constrained by the request of a top quark in the final state and from previous experimental limits~\cite{ATLAS1,ATLAS2,ATLAS3,CMS1,ATLAS4,CMS2,ATLAS5}, and the upper bound is motivated by the expected production cross section which decreases with $m_{\Tilde{\mu}}$ to reach $\sim 0.1$~fb at $m_{\Tilde{\mu}} = 500$~GeV. The mass of the neutralino, $m_{\Tilde{\chi}_{0}^{1}}$, is set between the kinematical limit of 180~GeV and $m_{\Tilde{\mu}} - 20$~GeV. Steps of 50~GeV are used both for the $m_{\Tilde{\mu}}$ and $m_{\Tilde{\chi}_{0}^{1}}$ ranges. The proper lifetime of the neutralino, $c\tau_0$, is set at seven values between 0.1 and 100~cm in order to cover the acceptance of the tracker. The signal events are then simulated using PYTHIA 8.240~\textcolor{red}{ref.XX} with the CP5 tune~\textcolor{red}{ref.XX} and the NNPDF3.1 leading-order (LO)~\textcolor{red}{ref.XX} set of parton distribution functions (PDFs). The MLM~\textcolor{red}{ref.XX} prescription of matching jets from matrix element calculations to those from parton showers is applied. The procedure, which involves $~240$ mass and $c\tau_0$ values, is repeated for each data taking year period.
 \newline \smallskip
 The generation is produced using a private model described in Appendix~\ref{APP: GEN}. 
 \smallskip
@@ -214,146 +222,27 @@ The list of background MC samples used is detailed in Appendix~\ref{APP: MCbkg}.
 %------------------- SECTION ----------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Object Selection}
-\label{SEC: OBJSEL}
+\section{Event selection}
+\label{SEC: EVTSEL}
 
-Particle-Flow \cite{CMS:2017yfk} is the algorithm used by the CMS experiment to reconstruct objects by using the information of all sub-detectors. Selections are applied on the following reconstructed objects: on muons for the muon channel and on both leptons when looking at the electron-muon channel (used for background estimation) and jets for all channels. The analysis looks for prompt leptons with potential displaced leptons coming from the decay of heavy-flavor hadrons from the decay channel of the neutralino. In addition, the prompt leptons can overlap with the displaced jets, increasing the complexity of the experimental signature of the signal. All these constraints have been taken into account for the selections of the different objects and of the events.
+The searched signal events are characterized by a pair of opposite sign high \pt muons coming from the PV (prompt muons) and associated with many displaced jets. Depending on the mass values of the searched smuon and neutralino, the jets can be distributed rather isotropically and loose constrained have to be retained for their selection. In addition the prompt leptons can overlap with the displaced jets, increasing the complexity of the experimental signature of the signal. Furthermore, as particle tracks from displaced jets produced in a high density environment are not precisely enough described by the simulation, and as one of the main SM backgrounds for this search is the production of top quark pair events, an independent sample is used where the presence of a pair of opposite charge high \pt prompt muon and prompt electron is requested. This e$\mu$ validation sample is highly enriched in \ttbar events where the produced W bosons decay into e$\nu$ and $\mu\nu$. Similar selections as for the $\mu\mu$ sample are applied on the e$\mu$ validation sample, which is used to assess the analysis strategy and to measure the background yield from data. 
 
-\subsection{Muons}
-Muons are reconstructed using the information from the tracker and the muon chambers. In this analysis, muons are required to be in the acceptance of the muon detector,$|\eta| <$ 2.4. All muons are required to have a $p_T > $  3 GeV. In the muon channel, there are two prompt muons that come from the decay of the smuons. These prompt muons are required to have constraints on their impact parameters, to be of opposite charge and also to follow the muon ID and isolation given in the Table.\ref{tab:MUONSEL}. The two prompt muons from the signal tend to be more energetic than muons from the Standard Model $t\bar{t}$ muons as shown in Fig.\ref{fig:MuonPt}. As the prompt signal muons come from the decay of the smuons, they also tend to be more back-to-back than $t\bar{t}$ muons as shown in Fig.\ref{fig:MuondR}.
+For the $\mu\mu$ sample, events have to pass a high \pt single muon or double-muon trigger request. 
+The muon candidates are identified with a tight criterion~\textcolor{red}{ref. pub MUO-16-001}, and to be isolated from nearby particles using a criterion originally developed for leptons inside Lorentz-boosted jets~\cite{MiniIso1, MiniIso2}. The choice of a tight isolation aims to maintain good selection efficiency for the simulated signal events while removing wrongly reconstructed muons close to jets. 
+As part of the tight identification request, the muon track has to originate close to the PV with a transverse (longitudinal) impact parameter fulfilling $|d_{xy}| < 0.2$ ($|d_z| < 0.5)$~cm.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/MuonLeadingPt.pdf}\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/MuonLeadingPt2.pdf}
-\caption{\label{fig:MuonPt} Distributions of the leading and sub-leading muon $p_T$ in signal events and $t\bar{t}$ MC events.}
-\end{figure}
-\FloatBarrier
+For the e$\mu$ sample, the trigger relies on the presence of a high \pt electron and a high \pt muon. The same muon identification and isolation as for the $\mu\mu$ sample are requested. 
+A tight identification and a tight PF isolation are applied to the electron candidate~\textcolor{red}{ref. pub EGM-17-001}.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/MuonMuondEta.pdf}\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/MuonMuondPhi.pdf}
-\caption{\label{fig:MuondR} $\Delta\eta$ and $\Delta\phi$ distributions between the leading and sub-leading muon in signal events and $t\bar{t}$ MC events.}
-\end{figure}
-\FloatBarrier
+Those events are then retained if they contain two opposite sign leptons within $|\eta| < 2.4$ and  with \pt values well above the trigger thresholds applied in the $\mumu$ and e$\mu$ samples. 
+In the $\mumu$ case, the highest \pt muon has to be larger than 25~GeV and for the sub-leading muon to be larger than 10~GeV. 
+In the e$\mu$ case, the highest \pt lepton (electron or muon) has to be larger than 25~GeV and for the sub-leading lepton (muon or electron) to be larger than 15~GeV. 
+Finally, in order to remove low mass resonances, the invariant mass of the lepton pair has to be larger than 20~GeV (~\textcolor{red}{for emu, but also for mumu ?}). 
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|c|c|c|}
-  \hline
-  \rowcolor{lightgray} 
-  Selection & Prompt & Other \\
-  \hline
-  GlobalMuon & True & True\\
-  $|\eta|$ & 2.4 & 2.4\\
-  $p_T$ & 3 & 3\\
-  $|d_{dxy}|$ & 0.1 cm & none\\
-  $|d_{dz}|$ & 0.2 cm & none\\
-  TightID & True & False\\
-  MiniIsoTight & True & False\\
-  \hline
-\end{tabular}
-    \caption{Selections for the Muons in the muon channel. The identification tag Tight refers to the recommendation tag of the MuonPOG \cite{MuonIDRun2} as well as the isolation flag MiniIsoTight. 
-    \label{tab:MUONSEL}}
-\end{table}
-
-Concerning muon corrections, the Rochester Correction \cite{ROCCOR} have been applied on the Monte Carlo samples according to the Muon POG recommendations in order to correct the momentum scale and resolution of muons for each year of Run~2.
-
-In addition to the Rochester Correction, the scale factors for the muons are computed according to the Muon POG \cite{MuonSpark1}\cite{MuonSpark2} using the Spark T\&P tool for both Run~2 and Run~3. This tool is used to correct the discrepancy between data and MC for the muons but also for the trigger used (only for the muon channel). Scale factors are given in bins of $p_T$ and $\eta$ in Fig.\ref{fig:SP1}.
-\label{Spark}
-
-\begin{figure}
-    \centering
-    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/NUM_TightID_DEN_TrackerMuons.pdf}
-    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/NUM_MiniIsoTight_DEN_TightID.pdf}
-    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/NUM_Trigger_DEN_MiniIsoTight.pdf}
-    \caption{ Distribution of the muon scale factors in bins of $p_T$ and $\eta$. The top figure correspond to the identification SF $\epsilon^{\mu}_{ID|TRK}$, the middle figure corresponds to the isolation SF $\epsilon^{\mu}_{ISO|ID}$ and the bottom figure corresponds to the trigger SF $\epsilon^{\mu}_{Trigger|ISO}$.}
-    \label{fig:SP1}
-\end{figure}
-
-In order to match the online and offline selection of the analysis, the following selection is applied for the computation of the scale factors with Spark on the $Z\rightarrow\mu\mu$ resonance:\\
-\begin{enumerate}
-    \item for 2016 : tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_v and pair\_mass $>$ 10
-        
-    \item for 2017 : tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and ( tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v == 1 or \\ tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8\_v ) and pair\_mass $>$ 10
-        
-    \item for 2018 :  tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v == 1  and pair\_mass $>$ 10
-\end{enumerate}
-
-The final scale factor is defined as the combination of four efficiencies :
-\begin{equation}
-    SF^{\mu} = \epsilon^{\mu}_{TRK} *\epsilon^{\mu}_{ID|TRK} * \epsilon^{\mu}_{ISO|ID} * \epsilon^{\mu}_{Trigger|ISO}
-\end{equation}
-
-where :
-\begin{itemize}
-    \item $\epsilon^{\mu}_{TRK}$ is the tracking efficiency really close to unity and set to 1 by the MuonPOG
-    \item $\epsilon^{\mu}_{ID|TRK}$ is the ratio of muons passing a given Identification flag with respect to the number of tracker muons (to follow the computation of the Muon POG)
-    \item $\epsilon^{\mu}_{ISO|ID}$ is the ratio of muons passing a given Isolation flag with respect to the number of muon passing the Identification flag
-    \item $\epsilon^{\mu}_{Trigger|ISO}$ is the ratio of muons passing the trigger requirement with respect to the number of muons passing the Isolation criteria (and Identification flag).
-\end{itemize}
-These efficiencies are computed for each necessary combination \cite{MuonSpark3} of ID/ISO/trigger of muons  indicated in the Table.\ref{tab:MUONSEL}.
-
-\subsection{Electrons}
-
-Electrons are objects that have a dedicated tracking algorithm, the Gaussian Sum Filter tracking \cite{Adam_2005} algorithm that uses the information of the tracker and the ECAL to reconstruct the track of electrons taking into account the bremsstrahlung.
-
-These prompt electrons in the electron-muon channel (for background estimation but also in the potential electron channel) are required to have constraints on their impact parameters, to be of opposite charge and also to follow the electronID and Isolation given in the Table.\ref{tab:ELSEL}. Electron IDs and corrections are implemented following the EGamma POG using the EGammaPostRecoTools \cite{EgammaPostRecoTools}.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{|c|c|c|c|}
-  \hline
-  \rowcolor{lightgray} 
-  Selection & $Prompt_{|\eta|<1.479}$ & $Prompt_{|\eta|> 1.556}$ & Others \\
-  \hline
-  $|\eta|$ & 1.479 & 2.4 & 2.4 \\
-  $p_T$ & 10 & 10 & 10\\
-  $|d_{dxy}|$ & 0.05 cm  & 0.10 cm & none\\
-  $|d_{dz}|$ & 0.10 cm & 0.20 cm & none\\
-  TightID & True & True & False\\
-  \hline
-\end{tabular}
-    \caption{Selections for the prompt Electrons in the electron channel. The TightID refers to the "cutBasedElectronID-Fall17-94X-V2-tight" working point from the EGamma POG.}
-    \label{tab:ELSEL}
-\end{table}
-
-\subsection{Jets}
-\label{SUB:JETS}
-
-This analysis aims at looking at Run~2 and Run~3 data. This involves different types of jets between the two data-taking periods. For Run~2, AK4PF jets are used where AK4PF indicates the clustering of Particle-Flow candidates through the anti-$k_T$ algorithm \cite{ANTIKT} with a distance parameter of 0.4. The selection applied on jets are summarized in Table.\ref{tab:JETSEL}. Further selections will be applied on jets for the event reconstruction. The $p_T$  distribution in Fig.\ref{fig:JetPt} shows that the signal tends to be more energetic than the Standard Model $t\bar{t}$ background. The $\Delta R$   distribution in Fig.\ref{fig:JetdR} shows the tendency of the two leading jets to be more back-to-back compared to the $t\bar{t}$ background.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Jet/JetLeadingPt.pdf}\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Jet/JetLeadingPt2.pdf}
-\caption{\label{fig:JetPt} Distributions of the leading and sub-leading jet $p_T$ in signal events and $t\bar{t}$ MC events.}
-\end{figure}
-\FloatBarrier
-
-\begin{figure}[ht]
-\centering
-\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Jet/JetJetdR.pdf}
-\caption{\label{fig:JetdR}  $\Delta R$ distribution between the leading and sub-leading jets in signal and $t\bar{t}$ MC events.}
-\end{figure}
-\FloatBarrier
-
-\begin{table}[h]
-\centering
-\begin{tabular}{|c|c|}
-  \hline
-  \rowcolor{lightgray} 
-  Selection & Value \\
-  \hline
-  $p_T$ & 20 \\
-  TightLepVetoId & True \\
-  \hline
-\end{tabular}
-    \caption{Selections for the jets with the TightID referring to the recommendation of the Jets POG\cite{TIGHTJET}.}
-    \label{tab:JETSEL}
-\end{table}
-
-As a note, one could wonder the effect of the TightJetID on displaced vertices and on the final vertex reconstruction efficiency since jets are the main constituents of this physics process. It has been checked that the TightJetID and TightJetIDLepVeto select more than 90\% and 80\% respectively of the jets and that the final reconstruction efficiency of the vertices is not affected by this selection despite the loss of jets. \\
-
-The PUPPI Jets collection has been tested for Run~3 but the signal reconstruction efficiency decreases by a few percent while keeping the AK4PFJets maintains the signal reconstruction efficiency at the same level. Therefore, both Run~2 and Run~3 will make use of the AK4PFJets collection.
+Finally the event is retained if it has at least one jet with $p_{\text T} > 20$~GeV and not containing a prompt lepton. 
+The efficiency for a signal event to pass the trigger request and event selection is displayed in~\textcolor{red}{Fig.\ref{fig:XX} TO DO MAIS JE L'AI DEJA} as a function of the neutralino mass and lifetime for several smuon mass values. The efficiency is lower ($\simeq0.15$-$0.25$) when the mass difference $\Delta m_{\Tilde{\mu}-\Tilde{\chi}^{1}_{0}} = m_{\Tilde{\mu}} - m_{\Tilde{\chi}^{1}_{0}}$ is small, providing little phase space for the momenta of the prompt muons. This efficiency reaches $\simeq0.70$-$0.85$ when \dmass is larger. The event selection efficiency weakly depends from the \neutralino lifetime.
+\smallskip \newline
+The datasets used and the triggers applied are detailed in Appendix~\ref{APP: DATASET}, and the selections of the leptons and jets are more detailed in Appendix~\ref{APP: Objects}. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -361,15 +250,15 @@ The PUPPI Jets collection has been tested for Run~3 but the signal reconstructio
 %------------------- SECTION ----------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Event Selection}
-\label{SEC: EVTSEL}
+%\section{Event Selection}
+%\label{SEC: EVTSEL}
 
-This analysis can take advantage of the two prompt leptons to select the events. One lepton is always selected by the online trigger selection and the second lepton can come from the dilepton trigger mentioned in Table.\ref{tab:TRIGGER2018} or it can also be selected offline following a specific selection on the invariant mass of the two leptons selected, detailed below. The $\tau$ channel is not studied since its decay can significantly change the experimental signature as jets from the $\tau$ decay could overlap with the displaced jets and potentially in due a bias in the reconstruction of the event detailed in section.\ref{SEC: EVTREC}. In this analysis, the two prompt leptons must be of opposite charge since the smuon is considered to be of Dirac nature.
-Adding to the selections introduced on prompt leptons in the previous section and the trigger mentioned in section.\ref{APP: DATASET}, the first selected muon is required to have a $p_T > 25$ GeV and the second muon selected is required to have a $p_T > 10$ GeV. The invariant mass of the two selected muons is required to be above 10 GeV in order to reduce the amount of low-mass resonances in the search. 
+%This analysis can take advantage of the two prompt leptons to select the events. One lepton is always selected by the online trigger selection and the second lepton can come from the dilepton trigger mentioned in Table.\ref{tab:TRIGGER2018} or it can also be selected offline following a specific selection on the invariant mass of the two leptons selected, detailed below. The $\tau$ channel is not studied since its decay can significantly change the experimental signature as jets from the $\tau$ decay could overlap with the displaced jets and potentially in due a bias in the reconstruction of the event detailed in section.\ref{SEC: EVTREC}. In this analysis, the two prompt leptons must be of opposite charge since the smuon is considered to be of Dirac nature.
+%Adding to the selections introduced on prompt leptons in the previous section and the trigger mentioned in section.\ref{APP: DATASET}, the first selected muon is required to have a $p_{\text T} > 25$ GeV and the second muon selected is required to have a $p_{\text T} > 10$ GeV. The invariant mass of the two selected muons is required to be above 10 GeV in order to reduce the amount of low-mass resonances in the search. 
 
-The topology of the event depends on the point in the phase space of the signal that is chosen where the signal can be very displaced (dozens of centimeters down to a millimeter) and also the mass spectra can change the kinematic of the event considering the signal samples mentioned in Table.\ref{tab:TAB1}.\\
-One important feature of the signal is the $t\Bar{t}$-like experimental signature where two b-jets are produced in the event. B-tagging is applied on slightly displaced vertices \cite{CMS-DP-2018-058} depending on the decay length of the B-Hadron. Since the signal event is close to a $t\bar{t}$ event, the b-tagging could have the same efficiency for both signal and background.
-Therefore, B-Tagging is not a variable that is used in this analysis since its efficiency depends on the point in the phase space we want to look for.\\
+%The topology of the event depends on the point in the phase space of the signal that is chosen where the signal can be very displaced (dozens of centimeters down to a millimeter) and also the mass spectra can change the kinematic of the event considering the signal samples mentioned in Table.\ref{tab:TAB1}.\\
+%One important feature of the signal is the $t\Bar{t}$-like experimental signature where two b-jets are produced in the event. B-tagging is applied on slightly displaced vertices \cite{CMS-DP-2018-058} depending on the decay length of the B-Hadron. Since the signal event is close to a $t\bar{t}$ event, the b-tagging could have the same efficiency for both signal and background.
+%Therefore, B-Tagging is not a variable that is used in this analysis since its efficiency depends on the point in the phase space we want to look for.\\
 
 %     This first online+offline selection allows to reduce backgrounds up to 90\% but it is not enough in order to observe the signal in any part of the phase space. Therefore, a step further is implemented in order to reduce the background at event level using the topology of the event.
 
@@ -384,9 +273,9 @@ Therefore, B-Tagging is not a variable that is used in this analysis since its e
 %   \hline
 %   MET & Total Missing Transverse Energy \\
 %   \hline
-%   $H_T$ & Sum of the $p_T$ of the jets that passed through the selections in Table.\ref{tab:JETSEL}\\
+%   $H_T$ & Sum of the \pt of the jets that passed through the selections in Table.\ref{tab:JETSEL}\\
 %   \hline
-%   $S_T$ & Sum of the $p_T$ of the muons that passed through the selections  for \textbf{Prompt} muons in Table.\ref{tab:MUONSEL}  \\
+%   $S_T$ & Sum of the \pt of the muons that passed through the selections  for \textbf{Prompt} muons in Table.\ref{tab:MUONSEL}  \\
 %   \hline
 %   nJets & Total number of jets that have passed the selections in Table.\ref{tab:JETSEL} \\
 %   \hline
@@ -398,13 +287,13 @@ Therefore, B-Tagging is not a variable that is used in this analysis since its e
 %   \hline
 %   NTracks & Total number of tracks in the event \\
 %   % \hline
-%   % $p_{T_{l1}}$ & Muon leading $p_T$ \\
+%   % $p_{T_{l1}}$ & Muon leading \pt \\
 %   % \hline
-%   % $p_{T_{l2}}$ & Muon sub-leading $p_T$ \\
+%   % $p_{T_{l2}}$ & Muon sub-leading \pt \\
 %   \hline
-%   $p_{T_{j1}}$ & Jet leading $p_T$ \\
+%   $p_{T_{j1}}$ & Jet leading \pt \\
 %   \hline
-%   $p_{T_{j2}}$ & Jet sub-leading $p_T$ \\
+%   $p_{T_{j2}}$ & Jet sub-leading \pt \\
 %     \hline
 %   $p_{T_{j1}}$ & Jet leading $\eta$ \\
 %   \hline
@@ -432,7 +321,7 @@ Therefore, B-Tagging is not a variable that is used in this analysis since its e
 %   \hline
 %   Hemi1 njet nomu & Number of jets from the first hemisphere having a $\Delta R$ above 0.4 with respect to the two prompt leptons \\
 %     \hline
-%   Hemi1 $p_T$ &  $p_T$ of the first reconstructed hemisphere\\
+%   Hemi1 \pt &  \pt of the first reconstructed hemisphere\\
 %   \hline
 %   Hemi1 eta &  $\eta$ of the first reconstructed hemisphere\\
 %   \hline
@@ -442,7 +331,7 @@ Therefore, B-Tagging is not a variable that is used in this analysis since its e
 %   \hline
 %   Hemi2 njet nomu & Number of jets from the second hemisphere having a $\Delta R$ above 0.4 with respect to the two prompt leptons\\
 %   \hline
-%   Hemi2 pt & $p_T$ of the second reconstructed hemisphere\\
+%   Hemi2 pt & \pt of the second reconstructed hemisphere\\
 %   \hline
 %   Hemi2 eta & $\eta$ of the second reconstructed hemisphere\\
 %   \hline
@@ -471,45 +360,73 @@ Therefore, B-Tagging is not a variable that is used in this analysis since its e
 %------------------- SECTION ----------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\section{Event Reconstruction}
+\section{Event characterization}
 \label{SEC: EVTREC}
 
-\subsection{Hemisphere contruction}
-The final state of the neutralino signal being heavily hadronic, the event reconstruction is based on the jets from the decay of the neutralino. These jets can come from the coupling between the stop and the down and strange quarks as well as the SM decay of the top. No particular restriction is applied on the decay of the W boson from the top, both leptonic and hadronic decays are considered in this analysis and leptons originating from the W or heavy-hadron flavour decays are also considered in the event reconstruction. The event topology and kinematics depends on the phase space of the signal studied: the smuon and neutralino masses, as well as the lifetime of the neutralino.\\
+The final state of the searched neutralino signal being mostly hadronic, the event topology reconstruction is based on the jets from the decay of both neutralinos. For each neutralino, these jets come from the hadronization of the two light quarks from stop and from the SM decay of the top quark. 
+% No particular restriction is applied on the decay of the W boson from the top, both leptonic and hadronic decays are considered in this analysis and leptons originating from the W or heavy-hadron flavour decays are also considered in the event reconstruction. 
+The event topology and kinematics however depends on the phase space of the signal studied: the smuon and neutralino masses and the lifetime of the neutralino. 
 
-In the signal, neutralinos are pair-produced from the decay of the smuons, and decay further away in the tracker. Both neutralinos tend to be back-to-back in azimuth ($\phi$) but close in $\eta$, see Fig.\ref{fig:dRNEUNEU} and Fig.\ref{fig:Geometry}, meaning that there are two clusters of tracks, mainly coming from jets, back-to-back in $\phi$. The 3D-space is then divided into two hemispheres, one for each neutralino. A precaution is applied as the prompt muons can overlap with the displaced jets, so the momentum-vector of the prompt leptons are discarded in this building procedure to avoid any bias, then jets are re-ordered by decreasing value of $p_T$. The hemispheres are defined as follows : 
-begin{itemize}
-    \item From the collections of jets ordered by decreasing value of $p_T$, the first jet is taken as the first axis of a first hemisphere
-    \item Then, by looking at the other jets, if the $\Delta R$ between the jet and the first axis is below 1.5, we add the momentum-vectors of the two jets to correct on the first axis, else we build a second axis.
-    \item  Finally, we iterate over all the jets and assign them to one among both hemispheres and recompute the hemisphere momentum vector for each new jet
-    \item If any jets is not involved in this procedure, it is discarded from the analysis
+In a first step the event is divided into two regions in the $\eta$-$\phi$ space (where $\phi$ is the azimuth), hereafter called ``hemispheres".
+The aim is to cluster the jets from each neutralino in separate hemispheres, select the particle tracks in these hemispheres and reconstruct the displaced vertices (DV) from the two neutralino decay candidates, one DV being reconstructed in each hemisphere.
+Note that no particular restriction is applied on the decay of the W bosons from the top quarks. Electrons or muons from W decays are not, a priori, involved in the hemisphere reconstruction based on jets, but the electron and muon tracks are used in the DV searches.
+But first, tracks from known SM process can be removed. These are tracks from reconstructed \Ks and \Lam decays and tracks originating from secondary interactions in the detector material.
+Tracks compatible with originating from the PV are also rejected. 
+Finally a boosted decision tree (BDT) is developed in order to enhance the signal sensitivity with respect to the overwhelming background of tracks from SM processes. 
+
+\subsection{Hemisphere building}
+In the signal events, neutralinos are pair-produced from the decay of the smuons, and decay further away in the tracker. Both neutralinos tend to be back-to-back in azimuth but close in $\eta$, see Figs.\ref{fig:Geometry} and~\ref{fig:dRNEUNEU}(upper), meaning that there are two clusters of tracks, mainly coming from jets, back-to-back in $\phi$. 
+
+The 3D-space is then divided into two hemispheres, mostly one for each neutralino. A precaution is applied as the prompt muons can overlap with the displaced jets. So the momentum-vectors of the prompt leptons are discarded in this building procedure to avoid any bias, then jets are re-ordered by decreasing value of \pt. The hemispheres are built as follows: 
+\begin{itemize}
+    \item The highest \pt jet is taken as the seed axis of a first hemisphere;
+    \item then, if the $\Delta R$ between the second jet and the seed axis is less than 1.5, the momentum-vectors of the two jets are added to redefine a first axis, else a second axis is defined by the second jet direction;
+    \item iteration is done on the remaining jets such that they are assigned to one among both hemispheres, provided they fulfill the constraint $\Delta R < 1.5$, the hemisphere momentum vector being recomputed for each new jet.
 \end{itemize}
 
-The goal of the analysis is to reconstruct one vertex per hemisphere.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[height=14cm, width=17cm, trim= 2cm 0cm 0cm 0.cm,clip]{images/Topology/dPhi_GenGen.pdf}
-\caption{\label{fig:dRNEUNEU} Top Left : $\Delta R$ between the two generated neutralinos. Top Right :  $\Delta \phi$ between the two generated neutralinos. Bottom Left : $\Delta R$ between the two reconstructed hemispheres. Bottom Right : $\Delta R$ between the generated neutralino and reconstructed hemisphere. The last plot shows a quite long tail indicating a mis-reconstruction of the axis in some cases, potentially when the neutralino decays outside of the tracker (or close to the end of the tracker) or an overlap between the two hemispheres.}
-\end{figure}
-
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
 \includegraphics[height=6cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Topology/topo.png}
-\caption{\label{fig:Geometry} Schematic view of the decay of the two neutralinos}
+\caption{\label{fig:Geometry} Schematic view of the decay of the two neutralinos.
+~\textcolor{red}{Increase a bit the size of the neutralinos. Move a little the arrows which are just at the borders of the cones, such that they are a little more inside}
+}
 \end{figure}
-\FloatBarrier
 
-\subsection{Quality of the reconstructed axes}
+\begin{figure}[h]
+\centering
+\includegraphics[height=14cm, width=17cm, trim= 2cm 0cm 0cm 0.cm,clip]{images/Topology/dPhi_GenGen.pdf}
+\caption{\label{fig:dRNEUNEU} Upper left: $\Delta R$ between the two generated neutralinos. Upper right: $\Delta \phi$ between the two generated neutralinos. Lower left: $\Delta R$ between the two reconstructed hemispheres. Lower right: $\Delta R$ between the generated neutralino and its closest ~\textcolor{red}{(?)} reconstructed hemisphere. 
+~\textcolor{red}{PRECISE the year in the caption. Replace the upper left by the Delta eta. Change the colors, improve the size of axels labels and titles and of the legends...}
+}
+\end{figure}
 
-The quality of the reconstructed axes can be estimated by comparing the generated axis of the neutralino and the axis of the reconstructed hemisphere associated. The axis reconstruction depends on the number of jets available, their ordering (by decreasing value of $p_t$) and also the $\Delta R$ criteria that is imposed for the jets to axis association ($\Delta R <$1.5).
-The $\Delta R$ distribution between the reconstructed axis of the hemisphere and the generated neutralino is given in Fig. \ref{fig:AXESQUALITY} as a function of the neutralino mass, smuon mass and neutralino $c\tau$. About 10\% of the hemispheres are not well reconstructed. This can happen for many reasons: the decay length of the neutralino is very high reaching the end of the tracker volume, hence leaving not many jets in the tracker. It can also happened that there is a mis-association of the jets between the two hemispheres if the two neutralinos are closer than $\Delta R $ = 3, therefore inducing a bias in the hemisphere building procedure. The plot on the right indicates that for higher $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^{1}_{0}} = M_{\Tilde{\mu}} - M_{\Tilde{\chi}^{1}_{0}}$, the hemisphere reconstruction efficiency is slightly lower, still reaching 85\%, while for lower $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^{1}_{0}}$, this efficiency reaches 95\%. In the former case where the $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^{1}_{0}}$ is lower, jets from the decay of the neutralino are less energetic, hence not passing the selections inducing a lack of information to complete the building procedure. Finally, the top from the neutralino can be produced at large angles with respect to the neutralino, therefore, the jets from the top are still used for the building procedure but are pointing towards the top direction and not the neutralino one. All these effects can explain why the hemisphere building procedure is not reaching 100\% even though the efficiency remains high.
+The $\Delta R$ distance between both hemisphere axes is displayed in Fig.\ref{fig:dRNEUNEU}(lower left) and is larger than 1.5 by construction, being peaked at $\simeq\pi$.
+From Fig.\ref{fig:dRNEUNEU}(lower right), the $\Delta R$ between a neutralino direction and its closest hemisphere displays a long tail. 
+The axis reconstruction depends on the number of jets available, their ordering (chosen by decreasing value of \pt) and also the $\Delta R$ criterion that is imposed for the jet-to-axis association ($\Delta R <$1.5).
+The efficiency to match the reconstructed axis with the closest generated neutralino (within $\Delta R < 1.5$) is given in Fig.\ref{fig:AXESQUALITY} as a function of the neutralino mass, smuon mass and neutralino $c\tau$. About 5-20\% of the hemispheres are not well reconstructed. This can happen for many reasons: 
+\begin{itemize}
+    \item For large neutralino lifetime, the decay length of the neutralino can be high, reaching the end of the tracker volume and hence leaving less jets in the tracker. 
+    \item It can also happened that there is a mis-association of the jets between the two hemispheres if the two neutralinos are closer than $\Delta R = 3$, therefore inducing a bias in the hemisphere building procedure. 
+    \item The matching efficiency is $\simeq10\%$ smaller at high \dmass value where jets from the decay of the neutralino are less energetic, hence contributing less well to the building procedure.
+    %The plot on the right indicates that for higher $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^{1}_{0}} = M_{\Tilde{\mu}} - M_{\Tilde{\chi}^{1}_{0}}$, the hemisphere reconstruction efficiency is slightly lower, still reaching 85\%, while for lower $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^{1}_{0}}$, this efficiency reaches 95\%. In the former case where the $\Delta M_{\Tilde{\mu}-\Tilde{\chi}^{1}_{0}}$ is lower, jets from the decay of the neutralino are less energetic, hence not passing the selections inducing a lack of information to complete the building procedure. 
+    \item At low \dmass values, the neutralino \pt is smaller and thus decays more isotropically, providing jets in the opposite hemisphere eventually.
+    %Finally, the top from the neutralino can be produced at large angles with respect to the neutralino, therefore, the jets from the top are still used for the building procedure but are pointing towards the top direction and not the neutralino one. 
+    \item Finally, additional jets, mostly from initial state radiation, can be also produced, disturbing the hemisphere building procedure.
+\end{itemize}
+%All these effects can explain why the hemisphere building procedure is not reaching 100\% even though the efficiency remains high.
 
-\begin{figure}[ht]
+% The goal of the analysis is to reconstruct one vertex per hemisphere. déjà dit...
+%\FloatBarrier
+
+%\subsection{Quality of the reconstructed axes}
+%The quality of the reconstructed axes can be estimated by comparing the generated axis of the neutralino and the axis of the reconstructed hemisphere associated. 
+
+\begin{figure}[h]
 \centering
 \includegraphics[height=10cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Topology/eff_dR_trueaxis.png}
-\caption{\label{fig:AXESQUALITY} $\Delta R$ between the generated neutralino and the reconstructed axis as a function of the neutralino and smuon masses for a given $c\tau$ of 20 cm.}
+\caption{\label{fig:AXESQUALITY} Efficiency to match the reconstructed hemisphere axis and the nearest generated neutralino direction ($\Delta R < 1.5$) between the generated neutralino and the reconstructed axis as a function of the neutralino and smuon masses and neutralino lifetime.
+~\textcolor{red}{(FIG. A REFAIRE MAIS JE L'AI DEJA)} 
+}
 \end{figure}
 
 \FloatBarrier
@@ -526,7 +443,7 @@ This analysis aims at reconstructing displaced vertices from the decay of a neut
 
 The background coming from the SM is mostly prompt backgrounds with prompt tracks associated to them but secondary displaced vertices can be observed due to different sources such as $V^0$ candidates, photon conversions and other nuclear interactions within the material budget of the tracker of CMS.
 
-In this analysis, we are aiming to first reduce the amount of tracks coming from these backgrounds (after the event selection mentioned in section.\ref{SEC: EVTSEL}) and then select the displaced tracks. In the CMS Software (CMSSW), there are already collections containing the $V^0$ candidates and the photon conversions. These collections will not be directly used for selections but to control the selections that are applied below.
+In this analysis, we are aiming to first reduce the amount of tracks coming from these backgrounds (after the event selection mentioned in Section~\ref{SEC: EVTSEL}) and then select the displaced tracks. In the CMS Software (CMSSW), there are already collections containing the $V^0$ candidates and the photon conversions. These collections will not be directly used for selections but to control the selections that are applied below.
 
 \subsection{Tracks from $V^0$ candidates}
 $V^0$ candidates stands for two hadrons : the $K^0_S$ meson and the $\Lambda^{0}$ baryon. These hadrons are produced from the hadronization of the strange quark. They have a long lifetime (about $10^{-10}$ s) and produce  displaced vertices with a lower track multiplicity (2-tracks vertices) compared to signal vertices (between 6 and 10 jets). Therefore, these vertices can be identified and the tracks associated to these vertices can be removed from the workflow and not be used later.
@@ -557,7 +474,7 @@ In order to remove the maximum of background tracks, the procedure of removing t
             \hline
               Charge & SS or OS\\
              \hline
-            $p_T$ & $>1$ GeV\\
+            \pt & $>1$ GeV\\
             \hline
             $\frac{\chi^{2}_{trk}}{nDoF}$  & $<5$\\
             \hline
@@ -610,7 +527,7 @@ Once the matching is done between the two positions, the tracks associated to th
 \label{SUB:BDTRK}
 
 \subsubsection{MiniAOD track constraints}
-Since the analysis is performed in the MiniAOD data format, there are several flags that have to be taken care of. The first one is that in this analysis, both packedPFCandidate and lostTracks collections are considered, more details in \cite{MiniAOD}. Indeed, one can expect displaced tracks to be of worse quality compared to prompt tracks and to be part of the lostTracks collection (not assigned to any PF candidate). The use of MiniAOD data-format also induces the use of High Purity tracks  (mva-based quality criteria using $p_T$ relative error, $\eta$, $\chi^2$, number of hits and number of lost hits). $\sim 97.8$\% of the tracks are HighPurity ones for all signal samples and $\sim$ 90\% in a $t\bar{t}$ MC sample and 88\% in a DY MC sample. The final requirement of the tracks are that lostTracks collection is added without requiring the HighPurity flag on (all tracks are not exaclty high-purity tracks) to keep the maximum of tracks before applying any selection. As a note, most tracks that will be selected by the track selection BDT (see below) are HighPurity tracks ($\sim$ 99\% for all the signal samples and 95\% for a $t\bar{t}$ sample and 94\% for a DY sample).
+Since the analysis is performed in the MiniAOD data format, there are several flags that have to be taken care of. The first one is that in this analysis, both packedPFCandidate and lostTracks collections are considered, more details in \cite{MiniAOD}. Indeed, one can expect displaced tracks to be of worse quality compared to prompt tracks and to be part of the lostTracks collection (not assigned to any PF candidate). The use of MiniAOD data-format also induces the use of High Purity tracks  (mva-based quality criteria using \pt relative error, $\eta$, $\chi^2$, number of hits and number of lost hits). $\sim 97.8$\% of the tracks are HighPurity ones for all signal samples and $\sim$ 90\% in a $t\bar{t}$ MC sample and 88\% in a DY MC sample. The final requirement of the tracks are that lostTracks collection is added without requiring the HighPurity flag on (all tracks are not exaclty high-purity tracks) to keep the maximum of tracks before applying any selection. As a note, most tracks that will be selected by the track selection BDT (see below) are HighPurity tracks ($\sim$ 99\% for all the signal samples and 95\% for a $t\bar{t}$ sample and 94\% for a DY sample).
 
         % \begin{table}[h]
         %     \centering
@@ -632,14 +549,14 @@ Since the analysis is performed in the MiniAOD data format, there are several fl
         %     \label{tab:TRKSEL}
         % \end{table}
         
-Tracks from the neutralino have a displacement that depends on the decay length of the latter, and it can be possibly hard to distinguish background tracks from signal tracks depending on the phase space. A first selection is optimised to reduce the number of background tracks by requiring $p_T > 1$ GeV, $\frac{\chi^2}{dof} < 5$ and a transverse impact parameter significance $|\frac{d_{xy}}{\sigma_{xy}}| > 5$ where  $\sigma_{xy}$ is the error on $d_{xy}$. Fig.\ref{fig:TRKDis} shows the distribution of these 3 variables after the cut between signal and $t\bar{t}$ events. This pre-selection allows to reduce a significant amount of background (about 90\% for $t\Bar{t}$) while keeping 95\% of the signal displaced tracks. \\
+Tracks from the neutralino have a displacement that depends on the decay length of the latter, and it can be possibly hard to distinguish background tracks from signal tracks depending on the phase space. A first selection is optimised to reduce the number of background tracks by requiring $p_{\text T} > 1$ GeV, $\frac{\chi^2}{dof} < 5$ and a transverse impact parameter significance $|\frac{d_{xy}}{\sigma_{xy}}| > 5$ where  $\sigma_{xy}$ is the error on $d_{xy}$. Fig.\ref{fig:TRKDis} shows the distribution of these 3 variables after the cut between signal and $t\bar{t}$ events. This pre-selection allows to reduce a significant amount of background (about 90\% for $t\Bar{t}$) while keeping 95\% of the signal displaced tracks. \\
 
         \begin{figure}[ht]
         \centering
         \includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0cm,clip]{images/TRK/Pt_TT.pdf}
         \includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0cm,clip]{images/TRK/Track_chi2.pdf}
         \includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0cm,clip]{images/TRK/drSig_TT.pdf}
-        \caption{\label{fig:TRKDis} Track $p_T$, $\frac{\chi^2}{nDoF}$ and impact parameter distributions. Distributions are shown for signal tracks, background tracks in signal events and tracks from $t\bar{t}$. }
+        \caption{\label{fig:TRKDis} Track \pt, $\frac{\chi^2}{nDoF}$ and impact parameter distributions. Distributions are shown for signal tracks, background tracks in signal events and tracks from $t\bar{t}$. }
         \end{figure}
 
         \FloatBarrier
@@ -879,10 +796,10 @@ Finally, the vertex reconstruction efficiency is shown as a function of the smuo
         A gradual shift of ECAL not propagated to L1 trigger primitives has resulted in a significant fraction of high $\eta$ trigger primitives to be mis-associated to the previous bunch crossing. Since L1 rules do not allow for two consecutive bunch crossing to fire, this can induce some missing event, up to 50\% for jets of several hundreds of GeV for $2.5<|\eta|<3$. The same effect is observed in the muon system due to a limited time resolution in the whole $\eta$ range. Both these effects are simulated and have to be corrected for. The procedure is described in : \cite{L1PrefiringWeightRecipe}
     \subsection{Top $p_{t}$ Reweighting}
             
-            Run 1 and Run~2 analyses have shown that the $p_T$ spectra of top quarks in $t\bar{t}$ data was significantly softer than those predicted by different generators. This implies a correction of the reconstructed top $p_T$ based  on the generated $p_T$. Several methods are given by the Top PAG in \cite{TopPtReweighting}. In the case of the search for displaced top quark, the $t\bar{t}$ MC sample is used to probe BSM and to model background. Once the reweighing factor is deduced from a control region enriched in $t\bar{t}$, it can be applied to $t\bar{t}$ MC samples. The Top PAG already provides a function for the reweighing factor as a function of the generated top $p_T$ :
+            Run 1 and Run~2 analyses have shown that the \pt spectra of top quarks in $t\bar{t}$ data was significantly softer than those predicted by different generators. This implies a correction of the reconstructed top \pt based  on the generated \pt. Several methods are given by the Top PAG in \cite{TopPtReweighting}. In the case of the search for displaced top quark, the $t\bar{t}$ MC sample is used to probe BSM and to model background. Once the reweighing factor is deduced from a control region enriched in $t\bar{t}$, it can be applied to $t\bar{t}$ MC samples. The Top PAG already provides a function for the reweighing factor as a function of the generated top \pt :
 
             \begin{equation}
-                SF(p_T) = e^{0.0615-0.0005.p^{Gen}_T}
+                SF(p_{\text T}) = e^{0.0615-0.0005.p^{Gen}_T}
             \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -895,7 +812,7 @@ Finally, the vertex reconstruction efficiency is shown as a function of the smuo
  In the signal region defined for this analysis (detailed in the subsection.\ref{ABCD}), the statistics for the different MC samples (DY and $t\Tilde{t}$ especially) are low. The choice is then made to use a data-driven method to better estimate the background in this signal region.
     \subsection{ABCD Method}
         \label{ABCD}
-        The multiple selections and observables in this analysis allow to combine them to better distinguish signal and background and define background enriched regions (CR for control regions and VR for validation regions) and signal-enriched regions (SR). The heavy hadronic final state can be used to distinguish the signal from backgrounds when comparing the $p_T$ of the two hemispheres introduced in section.\ref{SEC: EVTREC}. The other variable used to distinguish signal from background is the working point (Tight or Loose) from the track selection BDT that was used to build the vertex. Different ABCD comparisons will be shown depending on the number of reconstructed vertices (1 or 2) while looking at the distributions of the sum of the weights of the tracks associated to a vertex (this variable is described in section.\ref{SEC: SUM}). Another potential distribution is the mass of the reconstructed vertices and will be shown in Appendix.\ref{APP:ABCDVTXMASS}. The ABCD method can then be defined as shown in Fig.\ref{fig:ABCD_sch}.
+        The multiple selections and observables in this analysis allow to combine them to better distinguish signal and background and define background enriched regions (CR for control regions and VR for validation regions) and signal-enriched regions (SR). The heavy hadronic final state can be used to distinguish the signal from backgrounds when comparing the \pt of the two hemispheres introduced in section.\ref{SEC: EVTREC}. The other variable used to distinguish signal from background is the working point (Tight or Loose) from the track selection BDT that was used to build the vertex. Different ABCD comparisons will be shown depending on the number of reconstructed vertices (1 or 2) while looking at the distributions of the sum of the weights of the tracks associated to a vertex (this variable is described in section.\ref{SEC: SUM}). Another potential distribution is the mass of the reconstructed vertices and will be shown in Appendix.\ref{APP:ABCDVTXMASS}. The ABCD method can then be defined as shown in Fig.\ref{fig:ABCD_sch}.
         \begin{figure}[ht]
 \centering
 \includegraphics[height=10cm, width=17cm, trim= 0cm 0cm 0cm 0cm,clip]{images/ABCD/ABCD.pdf}
@@ -915,7 +832,7 @@ Finally, the vertex reconstruction efficiency is shown as a function of the smuo
 \FloatBarrier
         \subsection{Validations}
         In order to validate ABCD method, the workflow is tested on the $e\mu$ data and MC samples with specific selections (triggers, dilepton mass, lepton IDs and ISOs, MET) for this channel that are defined in Appendix.\ref{APP: VALIDEMU}. Results are shown in Fig. for the 1 vertex category and in Fig. for the 2 vertex category.
-        Correlations between the hemisphere $p_T$ and the use of the two working points are shown in Fig. .
+        Correlations between the hemisphere \pt and the use of the two working points are shown in Fig. .
         Signal contamination plots are shown in Fig. for the 1 vertex category and in Fig. in the 2 vertex category \textcolor{red}{add plots}
         \textcolor{red}{Plot is outdated,}
    
@@ -934,54 +851,55 @@ The data samples used in this analysis were collected by the CMS experiment duri
 
 %For each dataset,  the set of trigger that are used is given in Table \ref{tab:TRIGGER2016} for 2016, in Table \ref{tab:TRIGGER2017} for 2017 and in Table\ref{tab:TRIGGER2018} for 2018.
 
-\begin{table}[h]\label{tab:datasets2016}
-\begin{center}
+%\begin{table}[h]\label{tab:datasets2016}
+%\begin{center}
 
-\begin{tabular}{|l|l|}
-\hline     
-Dataset(pp collision 2016) & $\cal L$ (\fbinv)  \\\hline
-/MuonEG/Run2016B-ver2\_HIPM\_UL2016\_MiniAODv2-v2/MINIAOD     & 5.82  \\
-/MuonEG/Run2016C-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD      & 2.60 \\
-/MuonEG/Run2016D-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD   & 4.28 \\
-/MuonEG/Run2016E-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD     & 4.06 \\
-/MuonEG/Run2016F-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD    & 2.72 \\
-/MuonEG/Run2016F-UL2016\_MiniAODv2-v2/MINIAOD    & 0.42 \\
-/MuonEG/Run2016G-UL2016\_MiniAODv2-v2/MINIAOD     & 7.65 \\
-/MuonEG/Run2016H-UL2016\_MiniAODv2-v2/MINIAOD      & 8.73    \\\hline
-Total Lumi & 36.30 \\ \hline
-\end{tabular}
-\end{center}
-\caption{List of 2016 MuonEG data samples and the approximate luminosity as measured using \tt brilcalc with the JSON file $${\tt Cert\_271036-284044\_13TeV\_Legacy2016\_Collisions16\_JSON.txt }$$ in location /afs/cern.ch/cms/CAF/CMSCOMM/COMM$\_$DQM/certification/Collisions16 \\/13TeV/Legacy\_2016/ .}\label{tab:datasets2016}
-\end{table}
-\begin{table}[htbp]\label{tab:datasets2017}
-\begin{center}
-\begin{tabular}{|l|l|}
-\hline
-Dataset(pp collision 2017) & $\cal L$ (\fbinv) \\\hline
-/MuonEG/Run2017B-UL2017\_MiniAODv2-v1/MINIAOD    & 4.80 \\
- /MuonEG/Run2017C-UL2017\_MiniAODv2-v1/MINIAOD  & 9.57 \\
-/MuonEG/Run2017D-UL2017\_MiniAODv2-v1/MINIAOD   & 4.25 \\
- /MuonEG/Run2017E-UL2017\_MiniAODv2-v1/MINIAOD      & 9.31 \\
- /MuonEG/Run2017F-UL2017\_MiniAODv2-v1/MINIAOD      & 13.54 \\ \hline
- Total Lumi & 41.48 \\ \hline
- \end{tabular}
-\end{center}
-\caption{List of 2017 MuonEG data samples and the approximate luminosity as measured using \tt brilcalc with the JSON file $${\tt Cert\_294927-306462\_13TeV\_UL2017\_Collisions17\_GoldenJSON.txt}$$ in location afs/cern.ch/cms/CAF/certification/Collisions17/13TeV/Legacy\_2017/ .}\label{tab:datasets2017}
-\end{table}
-\begin{table}[htbp]\label{tab:datasets2018}
-\begin{center}
-\begin{tabular}{|l|l|}
-\hline
-Dataset(pp collision 2018) & $\cal L$ (\fbinv) \\\hline
- /MuonEG/Run2018A-UL2018\_MiniAODv2\_GT36-v1/MINIAOD      &  11.41 \\
- /MuonEG/Run2018B-UL2018\_MiniAODv2\_GT36-v1/MINIAOD    & 7.06 \\
-  /MuonEG/Run2018C-UL2018\_MiniAODv2\_GT36-v1/MINIAOD     & 6.89  \\
-  /MuonEG/Run2018D-UL2018\_MiniAODv2\_GT36-v1/MINIAOD     & 30.02 \\ \hline
-Total  & 59.80 \\ \hline
-\end{tabular}
-\end{center}
-\caption{List of 2018 MuonEG data samples and the approximate luminosity as measured using \tt brilcalc with the JSON file $${\tt Cert\_314472-325175\_13TeV\_Legacy2018\_Collisions18\_JSON.txt}$$ in location afs/cern.ch/cms/CAF/CMSCOMM/COMM$\_$DQM/certification/Collisions18/13TeV \\/Legacy\_2018/.}\label{tab:datasets2018}
-\end{table}
+%\begin{tabular}{|l|l|}
+%\hline     
+%Dataset(pp collision 2016) & $\cal L$ (\fbinv)  \\\hline
+%/MuonEG/Run2016B-ver2\_HIPM\_UL2016\_MiniAODv2-v2/MINIAOD     & 5.82  \\
+%/MuonEG/Run2016C-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD      & 2.60 \\
+%/MuonEG/Run2016D-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD   & 4.28 \\
+%/MuonEG/Run2016E-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD     & 4.06 \\
+%/MuonEG/Run2016F-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD    & 2.72 \\
+%/MuonEG/Run2016F-UL2016\_MiniAODv2-v2/MINIAOD    & 0.42 \\
+%/MuonEG/Run2016G-UL2016\_MiniAODv2-v2/MINIAOD     & 7.65 \\
+%/MuonEG/Run2016H-UL2016\_MiniAODv2-v2/MINIAOD      & 8.73    \\\hline
+%Total Lumi & 36.30 \\ \hline
+%\end{tabular}
+%\end{center}
+%\caption{List of 2016 MuonEG data samples and the approximate luminosity as measured using \tt brilcalc with the JSON file $${\tt Cert\_271036-284044\_13TeV\_Legacy2016\_Collisions16\_JSON.txt }$$ in location /afs/cern.ch/cms/CAF/CMSCOMM/COMM$\_$DQM/certification/Collisions16 \\/13TeV/Legacy\_2016/ .}\label{tab:datasets2016}
+%\end{table}
+%\begin{table}[htbp]\label{tab:datasets2017}
+%\begin{center}
+%\begin{tabular}{|l|l|}
+%\hline
+%Dataset(pp collision 2017) & $\cal L$ (\fbinv) \\\hline
+%/MuonEG/Run2017B-UL2017\_MiniAODv2-v1/MINIAOD    & 4.80 \\
+%/MuonEG/Run2017C-UL2017\_MiniAODv2-v1/MINIAOD  & 9.57 \\
+%/MuonEG/Run2017D-UL2017\_MiniAODv2-v1/MINIAOD   & 4.25 \\
+% /MuonEG/Run2017E-UL2017\_MiniAODv2-v1/MINIAOD      & 9.31 \\
+% /MuonEG/Run2017F-UL2017\_MiniAODv2-v1/MINIAOD      & 13.54 \\ \hline
+% Total Lumi & 41.48 \\ \hline
+% \end{tabular}
+%\end{center}
+%\caption{List of 2017 MuonEG data samples and the approximate luminosity as measured using \tt brilcalc with the JSON file $${\tt Cert\_294927-306462\_13TeV\_UL2017\_Collisions17\_GoldenJSON.txt}$$ in location afs/cern.ch/cms/CAF/certification/Collisions17/13TeV/Legacy\_2017/ .}\label{tab:datasets2017}
+%\end{table}
+%\begin{table}[htbp]\label{tab:datasets2018}
+%\begin{center}
+%\begin{tabular}{|l|l|}
+%\hline
+%Dataset(pp collision 2018) & $\cal L$ (\fbinv) \\\hline
+% /MuonEG/Run2018A-UL2018\_MiniAODv2\_GT36-v1/MINIAOD      &  11.41 \\
+% /MuonEG/Run2018B-UL2018\_MiniAODv2\_GT36-v1/MINIAOD    & 7.06 \\
+%  /MuonEG/Run2018C-UL2018\_MiniAODv2\_GT36-v1/MINIAOD     & 6.89  \\
+%  /MuonEG/Run2018D-UL2018\_MiniAODv2\_GT36-v1/MINIAOD     & 30.02 \\ \hline
+%Total  & 59.80 \\ \hline
+%\end{tabular}
+%\end{center}
+%\caption{List of 2018 MuonEG data samples and the approximate luminosity as measured using \tt brilcalc with the JSON file $${\tt Cert\_314472-325175\_13TeV\_Legacy2018\_Collisions18\_JSON.txt}$$ in location afs/cern.ch/cms/CAF/CMSCOMM/COMM$\_$DQM/certification/Collisions18/13TeV \\/Legacy\_2018/.}\label{tab:datasets2018}
+%\end{table}
+
 \subsection{Simulation}\label{sec:samples}
  MC samples used in this analysis for full Run~2 is same as mentioned in Section 2.2. 
  %The MC samples are processed with the full CMS detector simulation based on \GEANTfour~\cite{Agostinelli:2002hh}. The simulated events are reconstructed using the same algorithms as used for the data and include additional interactions per bunch crossings, referred to as pileup (PU). Simulated events are weighted so that the PU distribution reproduces the one observed in data, which has an average of about 23 (32) interactions per bunch crossing in 2016 (2017 and 2018).
@@ -1601,7 +1519,7 @@ The systematic parameters mentioned in the following sections are varied both po
     \pagebreak
     \subsection{Jet energy scale and resolution}
 
-    Uncertainties related to the calibration of the jet energy scale (JES) and resolution (JER) can change the selection efficiency of the jets \cite{JECUncertaintySources}\cite{JetResolution} as well as the reconstruction of the two hemispheres and their $p_T$. Since the distributions of the $p_T$ of the hemispheres is used for the final prediction of the background in the signal region, the impact of these uncertainties has to be evaluated. The implementation of the systematic uncertainties related to JES and JER follows the recommendations of \cite and \cite{WorkBookJetEnergyResolution}.    
+    Uncertainties related to the calibration of the jet energy scale (JES) and resolution (JER) can change the selection efficiency of the jets \cite{JECUncertaintySources}\cite{JetResolution} as well as the reconstruction of the two hemispheres and their \pt. Since the distributions of the \pt of the hemispheres is used for the final prediction of the background in the signal region, the impact of these uncertainties has to be evaluated. The implementation of the systematic uncertainties related to JES and JER follows the recommendations of \cite and \cite{WorkBookJetEnergyResolution}.    
     \pagebreak
     
     \subsection{Track selection BDT mis-identification}
@@ -1894,6 +1812,7 @@ The cross section $\sigma$ of the pair production of $\Tilde{\mu}$ is displayed 
          500  & $0.34^{+6.4\%}_{-5.7\%} \pm 3.6\%$  \\
     \end{tabular}
 \end{table}
+\newpage
 
 \subsection{Central production (MC\&I request)}
     The $c\tau_0$ of the neutralino has to follow an exponential distribution of the mean value defined by the user : 1~mm, 3~mm, 1~cm, 3~cm , 10~cm, 30~cm, 100~cm in order to probe the tracker volume. In order to produce LHE files with a specific mean $c\tau_0$, a few steps are needed and described below:
@@ -1916,7 +1835,7 @@ The cross section $\sigma$ of the pair production of $\Tilde{\mu}$ is displayed 
  The main background sources for the displaced vertices search are Drell-Yan and \ttbar. To develop the analysis, MC samples generated during the Summer20 Ultra-Legacy campaign for 2016, 2017 and 2018 stored in the MiniAODv2 format are used. The CMSSW settings to process these MC samples are given in Table~\ref{tab:MCSET} for Run~2 and Table~\ref{tab:MCSETRun3} for Run~3.
 The samples are listed in Table~\ref{tab:MC2018} for Run~2.
 
-\begin{table}
+\begin{table}[h]
     \centering
     \caption{Version of the CMS software, production campaign and the associated global tag for each year of Run~2 MC}
     \label{tab:MCSET}
@@ -1924,14 +1843,14 @@ The samples are listed in Table~\ref{tab:MC2018} for Run~2.
     \begin{tabular}{ ccll } 
          year & release & production campaign & global tag  \\
     \hline
-         2016Pre & 10\_6\_25 & \footnotesize RunIISummer20UL16MiniAODAPVv2  & \footnotesize 106X\_mcRun2\_asymptotic\_preVFP\_v11  \\
-         2016Post & 10\_6\_25 & \footnotesize RunIISummer20UL16MiniAODv2  & \footnotesize 106X\_mcRun2\_asymptotic\_v17  \\
+         2016 pre & 10\_6\_25 & \footnotesize RunIISummer20UL16MiniAODAPVv2  & \footnotesize 106X\_mcRun2\_asymptotic\_preVFP\_v11  \\
+         2016 post & 10\_6\_25 & \footnotesize RunIISummer20UL16MiniAODv2  & \footnotesize 106X\_mcRun2\_asymptotic\_v17  \\
          2017 & 10\_6\_20 & \footnotesize RunIISummer20UL17MiniAODv2  & \footnotesize 106X\_mc2017\_realistic\_v9  \\
          2018 & 10\_6\_20  & \footnotesize RunIISummer20UL18MiniAODv2  & \footnotesize 106X\_upgrade2018\_realistic\_v16\_L1v1  \\
     \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[h]
     \centering
     \caption{Version of the CMS software, production campaign and the associated global tag for each year of Run~3 MC}
     \label{tab:MCSETRun3}
@@ -1939,14 +1858,14 @@ The samples are listed in Table~\ref{tab:MC2018} for Run~2.
     \begin{tabular}{ ccll } 
          year & release & production campaign & global tag  \\
     \hline
-         2022Pre  & 13\_0\_13 & \footnotesize Run3Summer22MiniAODv4.    & \footnotesize 130X\_mcRun3\_2022\_realistic\_v5  \\
-         2022Post & 13\_0\_13 & \footnotesize Run3Summer22EEMiniAODv4.  & \footnotesize 130X\_mcRun3\_2022\_realistic\_postEE\_v6  \\
-         2023Pre  & 13\_0\_14 & \footnotesize Run3Summer23MiniAODv4     & \footnotesize 130X\_mcRun3\_2023\_realistic\_v14  \\
-         2023Post & 13\_0\_14 & \footnotesize Run3Summer23BPixMiniAODv4 & \footnotesize 130X\_mcRun3\_2023\_realistic\_postBPix  \\
+         2022 pre  & 13\_0\_13 & \footnotesize Run3Summer22MiniAODv4.    & \footnotesize 130X\_mcRun3\_2022\_realistic\_v5  \\
+         2022 post & 13\_0\_13 & \footnotesize Run3Summer22EEMiniAODv4.  & \footnotesize 130X\_mcRun3\_2022\_realistic\_postEE\_v6  \\
+         2023 pre  & 13\_0\_14 & \footnotesize Run3Summer23MiniAODv4     & \footnotesize 130X\_mcRun3\_2023\_realistic\_v14  \\
+         2023 post & 13\_0\_14 & \footnotesize Run3Summer23BPixMiniAODv4 & \footnotesize 130X\_mcRun3\_2023\_realistic\_postBPix  \\
     \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[h]
 \centering
     \caption{Background MC samples for Run~2 with their associated number of events (here for 2018) and cross sections}
     \label{tab:MC2018}
@@ -1978,130 +1897,369 @@ The samples are listed in Table~\ref{tab:MC2018} for Run~2.
 \section{Datasets}
 \label{APP: DATASET}
 
-\subsection{Run~2}
-Since the experimental signature has two prompt muons, this analysis makes use of two primary datasets: DoubleMuon and SingleMuon.
+Since the experimental signature of the signal has two prompt muons, the signal search analysis makes use of the following primary datasets:
+\begin{itemize}
+    \item 2016-2018: DoubleMuon and SingleMuon;
+    \item 2022: Muon;
+    \item 2023-2024: Muon0 and Muon1.
+\end{itemize}
+The signal search analysis also relies on dedicated double-muon and single-muon HLT triggers, which correspond to separate primary datasets in Run~2 but are mixed in the same primary dataset(s) in Run~3.
+In order to prevent double counting in Run~2, events of the SingleMuon primary dataset are only used if they pass a single-muon HLT trigger, but fail the double-muon HLT triggers. There is no such double counting in Run~3 primary datasets.
 
-The trigger set is given in Table~\ref{tab:TRIGGER2016} for 2016, Table~\ref{tab:TRIGGER2017} for 2017 and Table~\ref{tab:TRIGGER2018} for 2018. 
+In addition, both for Run~2 and Run~3, a validation sample is used which requests the presence of one prompt muon and one prompt electron and makes use of the MuonEG primary dataset.
 
-\begin{table}
+For Run~2, the HLT trigger lists are given in Table~\ref{tab:TRIGGER2016} for 2016, Table~\ref{tab:TRIGGER2017} for 2017 and Table~\ref{tab:TRIGGER2018} for 2018. 
+The data sets are listed in Tables~\ref{tab:datasets2016}, \ref{tab:datasets2017}, \ref{tab:datasets2018} for the years 2016-2018, and the associated global tags and luminosities are shown in Table~\ref{tab:DATASET}.
+
+For Run~3, the the HLT trigger lists are given in Table~\ref{tab:TRIGGER2022} for 2022, Table~\ref{tab:TRIGGER2023} for 2023 and Table~\ref{tab:TRIGGER2024} for 2024.
+The data sets are listed in Tables~\ref{tab:datasets2022}, \ref{tab:datasets2023}, \ref{tab:datasets2024} for the years 2022-2024, and the associated global tags and luminosities are shown in Table~\ref{tab:DATASETRun3}. 
+
+\begin{table}[h]
 \centering
-    \caption{2016 triggers}
+    \caption{2016 HLT triggers}
     \label{tab:TRIGGER2016}
     \smallskip
-\begin{tabular}{ cl }
-  Dataset & Trigger \\
+\begin{tabular}{ crll }
+  dataset & & trigger & note \\
   \hline
-  SingleMuon & HLT\_IsoMu27 \textbf{or} HLT\_IsoTkMu24 \\
-  DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ \\ 
-   & \text{or} HLT\_Mu17\_TrkIsoVVL\_TkMu8\_TrkIsoVVL\_DZ \\ 
-   & \text{or (for MC)} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL \\
+  SingleMuon & & HLT\_IsoMu24 or HLT\_IsoTkMu24 & \\
+  DoubleMuon & & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ & \\ 
+   & \text{or} & HLT\_Mu17\_TrkIsoVVL\_TkMu8\_TrkIsoVVL\_DZ & \\ 
+   & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL & for MC \\
+  MuonEG     & & HLT\_Mu8\_TrkIsoVVL\_Ele17\_CaloIdL\_TrackIdL\_IsoVL & \\
+   & \text{or} & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL & pre-APV  \\
+   & \text{or} & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ & post-APV  \\
+   & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL &  \\
+   & \text{or} & HLT\_Mu23\_TrkIsoVVL\_Ele8\_CaloIdL\_TrackIdL\_IsoVL & pre-APV  \\
+   & \text{or} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL & post-APV  \\
+   & \text{or} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_DZ & post-APV  \\
 \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[h]
 \centering
-    \caption{2017 triggers}
+    \caption{2017 HLT triggers}
     \label{tab:TRIGGER2017}
     \smallskip
-\begin{tabular}{ cl }
-  Dataset & Trigger \\
+\begin{tabular}{ crl }
+  dataset & & trigger \\
   \hline
-  SingleMuon & HLT\_IsoMu24 \textbf{or} HLT\_IsoMu27 \\
-  DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
-   & \text{or} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  SingleMuon & & HLT\_IsoMu24 or HLT\_IsoMu27 \\
+  DoubleMuon & & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
+   & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  MuonEG     & & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
+   & \text{or} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL \\
+   & \text{or} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
 \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[h]
 \centering
-    \caption{2018 triggers}
+    \caption{2018 HLT triggers}
     \label{tab:TRIGGER2018}
     \smallskip
-\begin{tabular}{ cl }
-  Dataset & Trigger \\
+\begin{tabular}{ crl }
+  dataset & & trigger \\
   \hline
-  SingleMuon & HLT\_IsoMu24\_v\\
-  DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
-   & \text{or} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  SingleMuon & & HLT\_IsoMu24 \\
+  DoubleMuon & & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
+   & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  MuonEG     & & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
+   & \text{or} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL \\
 \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[h]
+\centering
+    \caption{Primary datasets in 2016.}
+    \label{tab:datasets2016}
+    \smallskip
+\begin{tabular}{ l }
+/SingleMuon/Run2016B-ver2\_HIPM\_UL2016\_MiniAODv2-v2/MINIAOD \\
+/SingleMuon/Run2016C(to F)-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD \\
+/SingleMuon/Run2016F(to H)-UL2016\_MiniAODv2-v2/MINIAOD \\
+\hline
+/DoubleMuon/Run2016B-ver2\_HIPM\_UL2016\_MiniAODv2-v1/MINIAOD \\
+/DoubleMuon/Run2016C(to F)-HIPM\_UL2016\_MiniAODv2-v1/MINIAOD \\
+/DoubleMuon/Run2016F(to G)-UL2016\_MiniAODv2-v1/MINIAOD \\
+/DoubleMuon/Run2016H-UL2016\_MiniAODv2-v2/MINIAOD \\
+\hline
+/MuonEG/Run2016B-ver2\_HIPM\_UL2016\_MiniAODv2-v2/MINIAOD \\
+/MuonEG/Run2016C(to F)-HIPM\_UL2016\_MiniAODv2-v2/MINIAOD \\
+/MuonEG/Run2016F(to H)-UL2016\_MiniAODv2-v2/MINIAOD \\
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+    \caption{Primary datasets in 2017.}
+    \label{tab:datasets2017}
+    \smallskip
+\begin{tabular}{ l }
+/SingleMuon/Run2017B(to F)-UL2017\_MiniAODv2-v1/MINIAOD \\
+\hline
+/DoubleMuon/Run2017B(to F)-UL2017\_MiniAODv2-v1/MINIAOD \\
+\hline
+/MuonEG/Run2017B(to F)-UL2017\_MiniAODv2-v1/MINIAOD \\
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+    \caption{Primary datasets in 2018.}
+    \label{tab:datasets2018}
+    \smallskip
+\begin{tabular}{ l }
+/SingleMuon/Run2018A-UL2018\_MiniAODv2-v3/MINIAOD \\
+/SingleMuon/Run2018B(to C)-UL2018\_MiniAODv2-v2/MINIAOD \\
+/SingleMuon/Run2018D-UL2018\_MiniAODv2-v3/MINIAOD \\
+\hline
+/DoubleMuon/Run2018A(to D)-UL2018\_MiniAODv2\_GT36-v1/MINIAOD \\
+\hline
+/MuonEG/Run2018A(to D)-UL2018\_MiniAODv2-v1/MINIAOD \\
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
     \centering
-    \caption{Global tags with the associated Golden JSON file for each year of Run~2}
+    \caption{global tags with the associated golden \_JSON.txt file and integrated luminosity for each year of Run~2}
     \label{tab:DATASET}
     \smallskip
-   \begin{tabular}{ cll }
-         Year &  Global Tag & Golden JSON \\
+   \begin{tabular}{ ccllr }
+         year &  era  & global tag & golden JSON & lumi (\fbinv) \\
     \hline
-         2016Pre  &  \scriptsize  106X\_dataRun2\_v37 & \scriptsize Cert\_271036-284044\_13TeV\_Legacy2016\_Collisions16\_JSON.txt \\
-         2016Post &  \scriptsize 106X\_dataRun2\_v37  & \scriptsize Cert\_271036-284044\_13TeV\_Legacy2016\_Collisions16\_JSON.txt \\
-         2017     &  \scriptsize 106X\_dataRun2\_v37 & \scriptsize Cert\_294927-306462\_13TeV\_UL2017\_Collisions17\_GoldenJSON.txt \\
-         2018    &  \scriptsize 106X\_dataRun2\_v37 & \scriptsize Cert\_314472-325175\_13TeV\_Legacy2018\_Collisions18\_JSON.txt \\
+         2016 pre  &  B-F & \scriptsize  106X\_dataRun2\_v37 & \scriptsize Cert\_271036-284044\_13TeV\_Legacy2016\_Collisions16 & 19.5 \\
+         2016 post &  F-H & \scriptsize 106X\_dataRun2\_v37  & & 16.8 \\
+         2017     &  B-F & \scriptsize 106X\_dataRun2\_v37 & \scriptsize Cert\_294927-306462\_13TeV\_UL2017\_Collisions17 & 41.5 \\
+         2018    &  A-D & \scriptsize 106X\_dataRun2\_v37 & \scriptsize Cert\_314472-325175\_13TeV\_Legacy2018\_Collisions18 & 59.8 \\
     \end{tabular}
 \end{table}
 
-\subsection{Run~3}
-The new muon datasets are used: Muon for 2022, Muon0 and Muon1 for 2023 and 2024.
-
-For each data set, the trigger set is given in Table\ref{tab:TRIGGER2022} for 2022, Table\ref{tab:TRIGGER2023} for 2023 and Table\ref{tab:TRIGGER2024} for 2024 with the associated Global tag in Table \ref{tab:DATASETRun3}. 
-
-\begin{table}
+\begin{table}[h]
 \centering
-    \caption{2022 triggers}
+    \caption{2022 HLT triggers}
     \label{tab:TRIGGER2022}
     \smallskip
-\begin{tabular}{ cl } 
-  Dataset & Trigger \\
+\begin{tabular}{ crl } 
+  dataset & & trigger \\
   \hline
-  SingleMuon & HLT\_IsoMu24 \\
-  DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
-   & \text{or} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  Muon       & & HLT\_IsoMu24 \\
+   & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
+   & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  MuonEG     & & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
+   & \text{or} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL \\
 \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[h]
 \centering
-    \caption{2023 triggers}
+    \caption{2023 HLT triggers}
     \label{tab:TRIGGER2023}
     \smallskip
-\begin{tabular}{ cl }
-  Dataset & Trigger \\
+\begin{tabular}{ crl }
+  dataset & & trigger \\
   \hline
-  SingleMuon & HLT\_IsoMu24 \\
-  DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
-   & \text{or} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  Muon0 + Muon1 & & HLT\_IsoMu24 \\
+      & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
+      & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  MuonEG        & & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
+   & \text{or}    & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL \\
 \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[h]
 \centering
-    \caption{2024 triggers}
+    \caption{2024 HLT triggers}
     \label{tab:TRIGGER2024}
     \smallskip
-\begin{tabular}{ cl }
-  Dataset & Trigger \\
+\begin{tabular}{ crl }
+  dataset & & trigger \\
   \hline
-  SingleMuon & HLT\_IsoMu24 \\
-  DoubleMuon & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
-   & \text{or} HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  Muon0 + Muon1 & & HLT\_IsoMu24 \\
+      & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8 \\ 
+      & \text{or} & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8 \\
+  MuonEG        & & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
+      & \text{or} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL \\
 \end{tabular}
 \end{table}
 
-\begin{table}
-    \centering
-    \caption{Global tags with the associated Golden JSON file for each year of Run~3}
-    \label{tab:DATASETRun3}
+\begin{table}[h]
+\centering
+    \caption{Primary datasets in 2022.}
+    \label{tab:datasets2022}
     \smallskip
-    \begin{tabular}{ cll }
-         Year &  Global Tag & Golden JSON \\
-    \hline
-         2022 &  \scriptsize  140X\_dataRun3\_v3 & \scriptsize Cert\_Collisions2022\_355100\_362760\_Golden.json \\
-         2023 &  \scriptsize 140X\_dataRun3\_v3 & \scriptsize Cert\_Collisions2023\_366442\_370790\_Golden.json \\  
-         2024 &  \scriptsize 140X\_dataRun3\_HLT\_v3 & \scriptsize Cert\_Collisions2024\_378981\_384380\_Golden.json \\
-    \end{tabular}
+\begin{tabular}{ l }
+/Muon/Run2022C(to E)-22Sep2023-v1/MINIAOD \\
+/Muon/Run2022F-22Sep2023-v2/MINIAOD \\
+/Muon/Run2022G-22Sep2023-v1/MINIAOD \\
+\hline
+/MuonEG/Run2022C(to G)-22Sep2023-v1/MINIAOD \\
+\end{tabular}
 \end{table}
 
+\begin{table}[h]
+\centering
+    \caption{Primary datasets in 2023.}
+    \label{tab:datasets2023}
+    \smallskip
+\begin{tabular}{ l }
+/Muon0(1)/Run2023B-22Sep2023-v1/MINIAOD \\
+/Muon0(1)/Run2023C-22Sep2023\_v*-v1/MINIAOD \\
+/Muon0(1)/Run2023D-22Sep2023\_v*-v1/MINIAOD \\
+\hline
+/MuonEG/Run2023B-22Sep2023-v1/MINIAOD \\
+/MuonEG/Run2023C-22Sep2023\_v*-v1/MINIAOD \\
+/MuonEG/Run2023D-22Sep2023\_v*-v1/MINIAOD \\
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+    \caption{Primary datasets in 2024.}
+    \label{tab:datasets2024}
+    \smallskip
+\begin{tabular}{ l }
+/Muon0(1)/Run2024B(to I)-PromptReco-v*/MINIAOD \\
+\hline
+/MuonEG/Run2024B(to I)-PromptReco-v*/MINIAOD \\
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \caption{global tags with the associated \_Golden.json file and integrated luminosity for each year of Run~3}
+    \label{tab:DATASETRun3}
+    \smallskip
+    \begin{tabular}{ ccllr }
+         year &  era  & global tag & golden JSON & lumi (\fbinv) \\
+    \hline
+         2022 pre  & C-D & \scriptsize 130X\_dataRun3\_v2 & \scriptsize Cert\_Collisions2022\_355100\_362760 & 8.0 \\
+         2022 post & E   & \scriptsize 130X\_dataRun3\_v2 & & 5.8  \\
+                   & F-G & \scriptsize 130X\_dataRun3\_promptAnalysis\_v1 & & 20.9  \\
+         2023 pre  & C   & \scriptsize 130X\_dataRun3\_PromptAnalysis\_v1 & \scriptsize Cert\_Collisions2023\_366442\_370790 & 17.8 \\ 
+         2023 post & D   & \scriptsize 130X\_dataRun3\_PromptAnalysis\_v1 & & 9.5 \\  
+         2024      & B-I & \scriptsize 141X\_dataRun3\_Prompt\_v3 & \scriptsize Cert\_Collisions2024\_378981\_384380 & 109.1 \\
+    \end{tabular}
+\end{table}
+\clearpage
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------- SECTION ----------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Selection of PF objects}
+\label{APP: Objects}
+The selection criteria of the reconstructed particle candidates are described in the following. 
+
+\subsection{Muons}
+\label{APP: Muons}
+Prompt muon candidates are identified with the TightID criterion from the Muon POG~\textcolor{red}{\cite{MuonIDRun2} but which publi ?}.
+To preferentially select prompt muons in the high jet density environment of the searched signal,  muons have to be isolated from other PF candidates. The chosen muon isolation relies on a “mini-isolation” variable~\textcolor{red}{\cite{MiniIso1, MiniIso2}}, selecting on the transverse energy of the particles within a cone in $\eta$-$\phi$ space surrounding the muon momentum vector where the cone size scales as 1/\pt of the muon. The two prompt muons from the signal tend to be more energetic than in SM \ttbar events, as shown in Fig.\ref{fig:MuonPt}. As the prompt signal muons come from the decay of the smuons, they also tend to be more back-to-back, as shown in Fig.\ref{fig:MuondR}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/MuonLeadingPt.pdf}\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/MuonLeadingPt2.pdf}
+\caption{\label{fig:MuonPt} Distributions of the leading and sub-leading muon \pt in MC signal events and \ttbar events.
+~\textcolor{red}{PRECISE the year and which smuon and neutralino masses, eventually superimpose several signal masses}
+}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/MuonMuondEta.pdf}\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/MuonMuondPhi.pdf}
+\caption{\label{fig:MuondR} $\Delta\eta$ and $\Delta\phi$ distributions between the leading and sub-leading muon in MC signal events and \ttbar events.
+~\textcolor{red}{PRECISE the year and which smuon and neutralino masses, eventually superimpose several signal masses}
+}
+\end{figure}
+\FloatBarrier
+
+Concerning muon \pt corrections, the Rochester correction~\cite{ROCCOR} have been applied on the MC samples according to the Muon POG recommendations in order to correct the momentum scale and resolution of muons for each year of Run~2 ~\textcolor{red}{and Run~3 ?}.
+
+In addition to the Rochester Correction, the scale factors for the muons are computed according to the Muon POG~\cite{MuonSpark1,MuonSpark2} using the Spark T\&P tool for both Run~2 and Run~3. This tool is used to correct the discrepancy between data and MC for the muons but also for the trigger used in the $\mu\mu$ channel. Scale factors are given in bins of \pt and $\eta$ in Fig.\ref{fig:SP1}.
+\label{Spark}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/NUM_TightID_DEN_TrackerMuons.pdf}
+    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/NUM_MiniIsoTight_DEN_TightID.pdf}
+    \includegraphics[height=8cm, width=10cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Muon/NUM_Trigger_DEN_MiniIsoTight.pdf}
+    \caption{ Distribution of the muon scale factors in bins of \pt and $\eta$. The upper figure corresponds to the identification SF $\epsilon^{\mu}_{ID|TRK}$, the middle figure corresponds to the isolation SF $\epsilon^{\mu}_{ISO|ID}$ and the lower figure corresponds to the trigger SF $\epsilon^{\mu}_{Trigger|ISO}$.}
+    \label{fig:SP1}
+\end{figure}
+
+In order to match the online and offline dimuon selection, the following selections are applied for the computation of the scale factors with Spark on the $Z\rightarrow\mu\mu$ resonance:
+\begin{enumerate}
+    \item for 2016 : tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_v and pair\_mass $>$ 10
+        
+    \item for 2017 : tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and ( tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v == 1 or \\ tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8\_v ) and pair\_mass $>$ 10
+        
+    \item for 2018 :  tag\_isGlobal == 1 and probe\_isGlobal == 1 and abs(probe\_dxy)$<$0.1 and abs(probe\_dz)$<$0.2 and abs(tag\_dxy)$<$0.1 and abs(tag\_dz)$<$0.2 and tag\_isTight == 1 and tag\_MiniIsoTight == 1 and tag\_pt$>$25 and probe\_pt$>$10  and abs(tag\_eta)$<$2.4 and probe\_abseta$<$2.4 and tag\_HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8\_v == 1  and pair\_mass $>$ 10
+\end{enumerate}
+
+The final scale factor is defined as the combination of four efficiencies :
+\begin{equation}
+    SF^{\mu} = \epsilon^{\mu}_{TRK} *\epsilon^{\mu}_{ID|TRK} * \epsilon^{\mu}_{ISO|ID} * \epsilon^{\mu}_{Trigger|ISO}
+\end{equation}
+
+where :
+\begin{itemize}
+    \item $\epsilon^{\mu}_{TRK}$ is the tracking efficiency, very close from unity and set to 1 by the Muon POG;
+    \item $\epsilon^{\mu}_{ID|TRK}$ is the ratio of the number of muons passing the Identification flag with respect to the number of tracker muons (following the computation of the Muon POG);
+    \item $\epsilon^{\mu}_{ISO|ID}$ is the ratio of the number of muons passing the Isolation flag with respect to the number of muons passing the Identification flag;
+    \item $\epsilon^{\mu}_{Trigger|ISO}$ is the ratio of the number of muons passing the trigger requirement with respect to the number of muons passing the Isolation and Identification flags.
+\end{itemize}
+These efficiencies are computed for each necessary combination~\cite{MuonSpark3} of ID/ISO/trigger of muons.
+
+
+\subsection{Electrons}
+\label{APP: Electrons}
+Electrons are objects that have a dedicated tracking algorithm, the Gaussian Sum Filter tracking~\cite{Adam_2005} algorithm that uses the information of the tracker and the ECAL to reconstruct the track of electrons taking into account the bremsstrahlung.
+
+The electron-muon channel is used for background estimation. Electron IDs and corrections are implemented following the EGamma POG using the EGammaPostRecoTools~\textcolor{red}{\cite{EgammaPostRecoTools} (et compléter la référence ! mais pourquoi beaucoup moins d'info pour les électrons que pour les muons ?}.
+
+
+\subsection{Jets}
+\label{APP: Jets}
+The AK4PF jets are used where AK4PF indicates the clustering of Particle-Flow candidates through the anti-$k_T$ algorithm~\cite{ANTIKT} with a distance parameter of 0.4. The selection applied on jets are summarized in Table.\ref{tab:JETSEL}. Further selections will be applied on jets for the event reconstruction. The \pt  distribution in Fig.\ref{fig:JetPt} shows that the signal tends to be more energetic than the Standard Model $t\bar{t}$ background. The $\Delta R$   distribution in Fig.\ref{fig:JetdR} shows the tendency of the two leading jets to be more back-to-back compared to the $t\bar{t}$ background.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Jet/JetLeadingPt.pdf}\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Jet/JetLeadingPt2.pdf}
+\caption{\label{fig:JetPt} Distributions of the leading and sub-leading jet \pt in signal events and \ttbar MC events.
+~\textcolor{red}{PRECISE the year and which smuon and neutralino masses, eventually superimpose several signal masses}
+}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=8cm, width=8cm, trim= 0cm 0cm 0cm 0.cm,clip]{images/Jet/JetJetdR.pdf}
+\caption{\label{fig:JetdR}  $\Delta R$ distribution between the leading and sub-leading jets in signal and \ttbar MC events.
+~\textcolor{red}{PRECISE the year and which smuon and neutralino masses, eventually superimpose several signal masses}
+}
+\end{figure}
+\FloatBarrier
+
+\begin{table}[h]
+\centering
+    \caption{Selections for the jets with the TightID referring to the recommendation of the Jets POG\cite{TIGHTJET}.}
+    \label{tab:JETSEL}
+\smallskip
+\begin{tabular}{cc}
+  Selection & Value \\
+  \hline
+  \pt & > 20 GeV \\
+  TightJetIDLepVeto & True \\
+\end{tabular}
+\end{table}
+
+As a note, one could wonder the effect of the TightJetID on displaced vertices and on the final vertex reconstruction efficiency, since jets are the main constituents of this physical process. It has been checked that the TightJetID and TightJetIDLepVeto select more than 90\% and 80\% of the jets, respectively, and that the final reconstruction efficiency of the vertices is not affected by this selection despite the loss of jets. 
+
+The PUPPI Jets collection has also been tested for Run~3 but the signal reconstruction efficiency decreases by a few percent as compared to AK4PF jets. Therefore, both Run~2 and Run~3 make use of the AK4PF jets collection in this analysis.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
